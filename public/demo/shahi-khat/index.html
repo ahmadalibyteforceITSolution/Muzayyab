@@ -430,9 +430,9 @@ fix();document.addEventListener("DOMContentLoaded",fix);addEventListener("load",
 <img class="e-base" src="img/env.webp" alt="">
 <img class="e-glow" id="eGlow" src="img/envglow.webp" alt="">
 <div class="e-in"></div>
-<div class="e-flap" id="eFlap"><img src="img/env.webp" alt=""><img class="fglow" id="eGlow2" src="img/envglow.webp" alt=""></div>
+<div class="e-flap" id="eFlap"><img src="img/env.webp" alt="" onerror="this.style.display=\'none\'"><img class="fglow" id="eGlow2" src="img/envglow.webp" alt=""></div>
 <div class="e-light" id="eLight"></div>
-<div class="seal" id="seal"><img src="img/seal.webp" alt=""><span class="ini" id="sealIni"></span></div>
+<div class="seal" id="seal"><img src="img/seal.webp" alt="" onerror="this.style.display=\'none\'"><span class="ini" id="sealIni"></span></div>
 </div>
 <button class="op-hit" id="opHit" aria-label="Tap the seal to open the invitation"></button>
 </div>
@@ -666,8 +666,8 @@ function renderLists(){const T=L();
   document.getElementById("fam2").innerHTML=`<b>${CFG.v.nameA}</b><div class="p"><span class="rel t">${T.daughter}</span><span class="par t">${CFG.families[lang][0]}</span></div><span class="and">&amp;</span><b>${CFG.v.nameB}</b><div class="p"><span class="rel t">${T.son}</span><span class="par t">${CFG.families[lang][1]}</span></div>`;
   document.getElementById("prog").innerHTML=CFG.program.map(r=>`<div><time>${r.t}</time><i></i><span class="t">${r[lang]}</span></div>`).join("");
   document.getElementById("story").innerHTML=CFG.story.map(s=>`<div><small>${s.when}</small><b class="t">${s[lang].t}</b><p class="t">${s[lang].p}</p></div>`).join("");
-  document.getElementById("fns").innerHTML=CFG.events.map((e,i)=>`<article class="fn reveal"><img src="${e.img}" alt=""><div class="in"><div class="no t">${T.fnNo} · ${(T.nums||["One","Two","Three"])[i]}</div><div class="urn">${e.ur.n}</div><h3>${e.en.n}</h3><div class="when t">${e[lang].w}</div><div class="where t">${e[lang].p}</div><div class="dress t">${T.dress} · ${e[lang].d}</div></div></article>`).join("");
-  document.getElementById("gal").innerHTML=CFG.gallery.map(g=>`<figure><img src="${g.img}" alt=""><figcaption class="t">${g[lang]}</figcaption></figure>`).join("");
+  document.getElementById("fns").innerHTML=CFG.events.map((e,i)=>`<article class="fn reveal"><img src="${e.img}" alt="" onerror="this.style.display='none'"><div class="in"><div class="no t">${T.fnNo} · ${(T.nums||["One","Two","Three"])[i]}</div><div class="urn">${e.ur.n}</div><h3>${e.en.n}</h3><div class="when t">${e[lang].w}</div><div class="where t">${e[lang].p}</div><div class="dress t">${T.dress} · ${e[lang].d}</div></div></article>`).join("");
+  document.getElementById("gal").innerHTML=CFG.gallery.map(g=>`<figure><img src="${g.img}" alt="" onerror="this.style.display='none'"><figcaption class="t">${g[lang]}</figcaption></figure>`).join("");
   document.getElementById("vtabs").innerHTML=CFG.events.map((e,i)=>`<button role="tab" aria-selected="${i===vSel}" data-i="${i}" class="t">${e[lang].n}</button>`).join("");
   const e=CFG.events[vSel];document.getElementById("venue").innerHTML=`<div class="vw t">${e[lang].n} · ${e[lang].short}</div><b class="t">${e[lang].venue}</b><div class="va t">${e[lang].addr}</div><div class="acts"><a class="pill" href="${map(e)}" target="_blank" rel="noopener"><span class="t">${T.maps}</span></a><a class="pill line" href="${cal(e)}" target="_blank" rel="noopener"><span class="t">${T.cal}</span></a></div>`;
   document.getElementById("det").innerHTML=CFG.details.map(d=>`<div><small class="t">${d[lang][0]}</small><span class="t">${d[lang][1]}</span></div>`).join("");
@@ -714,8 +714,8 @@ if("IntersectionObserver" in window&&!reduce){const io=new IntersectionObserver(
   function thud(){try{if(!sfxOn||!ac)return;const t=ac.currentTime,o=ac.createOscillator(),g=ac.createGain();o.type="sine";o.frequency.setValueAtTime(140,t);o.frequency.exponentialRampToValueAtTime(55,t+.18);g.gain.setValueAtTime(.18,t);g.gain.exponentialRampToValueAtTime(.0001,t+.25);o.connect(g).connect(ac.destination);o.start(t);o.stop(t+.3)}catch(_){}}
   // seals between sections
   const secs=[...document.querySelectorAll(".paper > .sec")];
-  [2,5,8].forEach(i=>{const s=secs[i];if(!s)return;const k=document.createElement("div");k.className="kseal";k.innerHTML='<div><img src="img/seal.webp" alt=""><span></span></div>';s.parentNode.insertBefore(k,s)});
-  const cl=document.querySelector(".closing");if(cl){const k=document.createElement("div");k.className="kseal";k.innerHTML='<div><img src="img/seal.webp" alt=""><span></span></div>';cl.insertBefore(k,cl.firstChild)}
+  [2,5,8].forEach(i=>{const s=secs[i];if(!s)return;const k=document.createElement("div");k.className="kseal";k.innerHTML='<div><img src="img/seal.webp" alt="" onerror="this.style.display=\'none\'"><span></span></div>';s.parentNode.insertBefore(k,s)});
+  const cl=document.querySelector(".closing");if(cl){const k=document.createElement("div");k.className="kseal";k.innerHTML='<div><img src="img/seal.webp" alt="" onerror="this.style.display=\'none\'"><span></span></div>';cl.insertBefore(k,cl.firstChild)}
   document.querySelectorAll(".kseal span").forEach(s=>s.textContent=ini());
   // gold dust
   const cv=document.createElement("canvas");cv.id="kdust";document.body.appendChild(cv);const x=cv.getContext("2d");let P=[];
@@ -735,7 +735,7 @@ if("IntersectionObserver" in window&&!reduce){const io=new IntersectionObserver(
   // venue postcard flip
   const ven=document.getElementById("venue");if(ven)new MutationObserver(()=>{ven.classList.remove("kflip");void ven.offsetWidth;ven.classList.add("kflip")}).observe(ven,{childList:true});
   // rsvp: seal the letter
-  const send=document.createElement("div");send.id="ksend";send.innerHTML='<div class="l"><img src="img/seal.webp" alt=""></div><p>Sealed with love</p>';document.body.appendChild(send);
+  const send=document.createElement("div");send.id="ksend";send.innerHTML='<div class="l"><img src="img/seal.webp" alt="" onerror="this.style.display=\'none\'"></div><p>Sealed with love</p>';document.body.appendChild(send);
   const cb=document.getElementById("comeBtn");if(cb)cb.addEventListener("click",()=>{send.classList.add("on");setTimeout(thud,650);setTimeout(()=>send.classList.remove("on"),1900)});
 })();
 paint();

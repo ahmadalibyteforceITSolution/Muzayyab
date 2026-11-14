@@ -91,7 +91,73 @@ fix();document.addEventListener("DOMContentLoaded",fix);addEventListener("load",
 
   <form id="f" novalidate>
   <div class="card"><h2><i>1</i>Design</h2>
-    <label><span>Which design?</span><select id="design"></select></label>
+    <label><span>Which design?</span><select id="design">
+      <option value="the-arch">Mehraab · Signature</option>
+      <option value="emerald-seal">Zamurrad Mohar · Signature</option>
+      <option value="rose-sleeve">Gulabi Lifafa · Signature</option>
+      <option value="the-scroll">Qalam · Signature</option>
+      <option value="sapphire">Neelam · Signature</option>
+      <option value="sweet-box">Mithai Dabba · Signature</option>
+      <option value="shahi-khat">Shahi Khat · Signature</option>
+      <option value="gulabi-parda">Gulabi Parda · Signature</option>
+      <option value="kashi">Kashi · Signature</option>
+      <option value="sheesh-mahal">Sheesh Mahal · Signature</option>
+      <option value="shalimar">Shalimar · Signature</option>
+      <option value="shafaq">Shafaq · Signature</option>
+      <option value="naqsh">Naqsh · Signature</option>
+      <option value="henna-vine">Mehndi Bel · Premium</option>
+      <option value="bangles">Chooriyan · Premium</option>
+      <option value="drum-night">Dholki · Premium</option>
+      <option value="jasmine-veil">Sehra · Premium</option>
+      <option value="jewel-box">Kangan Box · Premium</option>
+      <option value="rose-window">Gulab Jharokha · Atelier</option>
+      <option value="palace">Shahi Mahal · Atelier</option>
+      <option value="the-swing">Jhoola · Atelier</option>
+      <option value="moonlight">Mahtaab · Atelier</option>
+      <option value="angoothi">Angoothi · Signature</option>
+      <option value="mehndi-raat">Mehndi Raat · Signature</option>
+      <option value="dastak">Dastak · Signature</option>
+      <option value="shagun">Shagun · Signature</option>
+      <option value="moti">Moti · Signature</option>
+      <option value="dawat">Dawat · Signature</option>
+      <option value="qubool">Qubool · Signature</option>
+      <option value="noor">Noor · Signature</option>
+      <option value="potli">Potli · Signature</option>
+      <option value="rasm">Rasm · Signature</option>
+      <option value="silsila">Silsila · Signature</option>
+      <option value="sandooq">Sandooq · Signature</option>
+      <option value="fanoos">Fanoos · Signature</option>
+      <option value="sitara">Sitara · Signature</option>
+      <option value="aarti">Aarti · Signature</option>
+      <option value="sindoor">Sindoor · Signature</option>
+      <option value="ghanti">Ghanti · Signature</option>
+      <option value="griha">Griha Pravesh · Signature</option>
+      <option value="haldi">Haldi · Signature</option>
+      <option value="gathbandhan">Gathbandhan · Signature</option>
+      <option value="saat-phere">Saat Phere · Signature</option>
+      <option value="rangoli">Rangoli · Signature</option>
+      <option value="doli">Doli · Signature</option>
+      <option value="shubh-aarambh">Shubh Aarambh · Signature</option>
+      <option value="kabootar">Kabootar · Signature</option>
+      <option value="girja">Girja · Signature</option>
+      <option value="shama">Shama · Signature</option>
+      <option value="fajr">Fajr · Premium</option>
+      <option value="milad">Mehfil-e-Milad · Signature</option>
+      <option value="quran-khwani">Quran Khwani · Signature</option>
+      <option value="aqeeqah">Aqeeqah · Signature</option>
+      <option value="ameen">Ameen · Signature</option>
+      <option value="iftar">Iftar · Signature</option>
+      <option value="labbaik">Labbaik · Signature</option>
+      <option value="zamzam">Zamzam · Signature</option>
+      <option value="musalla">Musalla · Signature</option>
+      <option value="cake">Cake · Signature</option>
+      <option value="tohfa">Tohfa · Signature</option>
+      <option value="gubbare">Gubbare · Signature</option>
+      <option value="surprise">Surprise · Signature</option>
+      <option value="khat">Khat · Signature</option>
+      <option value="gramophone">Gramophone · Signature</option>
+      <option value="gulab">Gulab · Signature</option>
+    </select></label>
     <div class="price"><span id="tierName"></span><b id="tierPrice"></b></div>
   </div>
 
@@ -181,8 +247,8 @@ const DESIGNS=[
  ["henna-vine","Mehndi Bel","premium",0],["bangles","Chooriyan","premium",0],["drum-night","Dholki","premium",0],
  ["jasmine-veil","Sehra","premium",0],["jewel-box","Kangan Box","premium",0],
  ["rose-window","Gulab Jharokha","atelier",0],["palace","Shahi Mahal","atelier",1],["the-swing","Jhoola","atelier",1],["moonlight","Mahtaab","atelier",1],["angoothi","Angoothi","signature",1],["mehndi-raat","Mehndi Raat","signature",1],["dastak","Dastak","signature",1],["shagun","Shagun","signature",1],["moti","Moti","signature",1],["dawat","Dawat","signature",1],["qubool","Qubool","signature",1],["noor","Noor","signature",1],["potli","Potli","signature",1],["rasm","Rasm","signature",1],["silsila","Silsila","signature",1],["sandooq","Sandooq","signature",1],["fanoos","Fanoos","signature",1],["sitara","Sitara","signature",1],["aarti","Aarti","signature",1],["sindoor","Sindoor","signature",1],["ghanti","Ghanti","signature",1],["griha","Griha Pravesh","signature",1],["haldi","Haldi","signature",1],["gathbandhan","Gathbandhan","signature",1],["saat-phere","Saat Phere","signature",1],["rangoli","Rangoli","signature",1],["doli","Doli","signature",1],["shubh-aarambh","Shubh Aarambh","signature",1],["kabootar","Kabootar","signature",1],["girja","Girja","signature",1],["shama","Shama","signature",1],["fajr","Fajr","premium",1],["milad","Mehfil-e-Milad","signature",1],["quran-khwani","Quran Khwani","signature",1],["aqeeqah","Aqeeqah","signature",1],["ameen","Ameen","signature",1],["iftar","Iftar","signature",1],["labbaik","Labbaik","signature",1],["zamzam","Zamzam","signature",1],["musalla","Musalla","signature",1],["cake","Cake","signature",1],["tohfa","Tohfa","signature",1],["gubbare","Gubbare","signature",1],["surprise","Surprise","signature",1],["khat","Khat","signature",1],["gramophone","Gramophone","signature",1],["gulab","Gulab","signature",1]];
-const TIER={};function setTiers(){["signature","premium","atelier"].forEach(t=>TIER[t]=[t[0].toUpperCase()+t.slice(1),BW_REGION.price(t)])}setTiers();
-BW_REGION.onChange(()=>{setTiers();try{tier()}catch(_){}});
+const TIER={};function setTiers(){["signature","premium","atelier"].forEach(t=>TIER[t]=[t[0].toUpperCase()+t.slice(1),BW_REGION.price(t)])}try{setTiers()}catch(_){}
+BW_REGION.onChange(()=>{try{setTiers()}catch(_){}try{tier()}catch(_){}});
 let style="southasian";const ALLEV=Object.keys(BW_EVENTS.NAMES).filter(k=>k!=="other");let EVT=BW_EVENTS.STYLES[style].events.map(k=>[k,BW_EVENTS.name(k)]);
 const $=id=>document.getElementById(id);
 const sel=$("design");

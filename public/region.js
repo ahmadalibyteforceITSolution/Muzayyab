@@ -21,6 +21,6 @@ window.BW_REGION={REGIONS,get cur(){return cur},fmt:(n,c)=>fmt(c||cur,n),
  num:(t,c)=>(REGIONS[c||cur]||REGIONS.pkr).price[t],code:c=>(REGIONS[c||cur]||REGIONS.pkr).code,
  fromPkr:(n,c)=>fmt(c||cur,n*(REGIONS[c||cur]||REGIONS.pkr).f),
  onChange:fn=>subs.push(fn)};
-if(!forced){fetch("/cdn-cgi/trace",{cache:"no-store"}).then(r=>r.text()).then(t=>{const m=t.match(/^loc=(\w+)/m);const c=fromCountry(m&&m[1]);try{localStorage.setItem("bw-reg",c)}catch(_){}
+if(!forced){if(!location.hostname.includes("localhost")&&!location.hostname.includes("127.0.0.1"))fetch("/cdn-cgi/trace",{cache:"no-store"}).then(r=>r.text()).then(t=>{const m=t.match(/^loc=(\w+)/m);const c=fromCountry(m&&m[1]);try{localStorage.setItem("bw-reg",c)}catch(_){}
   if(c!==cur){cur=c;subs.forEach(fn=>{try{fn(c)}catch(e){}})}}).catch(()=>{})}
 })();

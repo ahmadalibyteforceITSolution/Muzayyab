@@ -333,7 +333,7 @@ fix();document.addEventListener("DOMContentLoaded",fix);addEventListener("load",
 
 <div id="entrance" role="dialog" aria-label="Open the invitation">
   <div class="stage" id="stage">
-<div class="bx" id="bx" style="--hx:50%;--hy:70%;--hw:34%;--zx:50%;--zy:62%;--zs:1.5;--entbg:#f6ece0"><div class="bx-box" id="bxBox"><img src="img/a.webp" alt=""><img class="hb" src="img/b.webp" alt="" style="z-index:1"><i class="hhint"></i></div><div class="hdots"><i></i><i></i><i></i></div></div>
+<div class="bx" id="bx" style="--hx:50%;--hy:70%;--hw:34%;--zx:50%;--zy:62%;--zs:1.5;--entbg:#f6ece0"><div class="bx-box" id="bxBox"><img src="img/a.webp" alt="" onerror="this.style.display=\'none\'"><img class="hb" src="img/b.webp" alt="" style="z-index:1"><i class="hhint"></i></div><div class="hdots"><i></i><i></i><i></i></div></div>
 <button class="op-hit" id="opHit" aria-label="Draw a circle around the diya"></button>
 </div>
   <div class="ent-text"><div class="line t" data-k="entLine"></div><div class="hint t" data-k="entHint"></div><div class="tick"></div></div>
@@ -601,8 +601,8 @@ function renderLists(){const T=L();
   document.getElementById("fam2").innerHTML=`<b>${CFG.v.nameA}</b><div class="p"><span class="rel t">${T.daughter}</span><span class="par t">${CFG.families[lang][0]}</span></div><span class="and">&amp;</span><b>${CFG.v.nameB}</b><div class="p"><span class="rel t">${T.son}</span><span class="par t">${CFG.families[lang][1]}</span></div>`;
   document.getElementById("prog").innerHTML=CFG.program.map(r=>`<div><time>${r.t}</time><i></i><span class="t">${r[lang]}</span></div>`).join("");
   document.getElementById("story").innerHTML=CFG.story.map(s=>`<div><small>${s.when}</small><b class="t">${s[lang].t}</b><p class="t">${s[lang].p}</p></div>`).join("");
-  document.getElementById("fns").innerHTML=CFG.events.map((e,i)=>`<article class="fn reveal"><img src="${e.img}" alt=""><div class="in"><div class="no t">${T.fnNo} · ${(T.nums||["One","Two","Three"])[i]}</div><div class="urn">${e.ur.n}</div><h3>${e.en.n}</h3><div class="when t">${e[lang].w}</div><div class="where t">${e[lang].p}</div><div class="dress t">${T.dress} · ${e[lang].d}</div></div></article>`).join("");
-  document.getElementById("gal").innerHTML=CFG.gallery.map(g=>`<figure><img src="${g.img}" alt=""><figcaption class="t">${g[lang]}</figcaption></figure>`).join("");
+  document.getElementById("fns").innerHTML=CFG.events.map((e,i)=>`<article class="fn reveal"><img src="${e.img}" alt="" onerror="this.style.display='none'"><div class="in"><div class="no t">${T.fnNo} · ${(T.nums||["One","Two","Three"])[i]}</div><div class="urn">${e.ur.n}</div><h3>${e.en.n}</h3><div class="when t">${e[lang].w}</div><div class="where t">${e[lang].p}</div><div class="dress t">${T.dress} · ${e[lang].d}</div></div></article>`).join("");
+  document.getElementById("gal").innerHTML=CFG.gallery.map(g=>`<figure><img src="${g.img}" alt="" onerror="this.style.display='none'"><figcaption class="t">${g[lang]}</figcaption></figure>`).join("");
   document.getElementById("vtabs").innerHTML=CFG.events.map((e,i)=>`<button role="tab" aria-selected="${i===vSel}" data-i="${i}" class="t">${e[lang].n}</button>`).join("");
   const e=CFG.events[vSel];document.getElementById("venue").innerHTML=`<div class="vw t">${e[lang].n} · ${e[lang].short}</div><b class="t">${e[lang].venue}</b><div class="va t">${e[lang].addr}</div><div class="acts"><a class="pill" href="${map(e)}" target="_blank" rel="noopener"><span class="t">${T.maps}</span></a><a class="pill line" href="${cal(e)}" target="_blank" rel="noopener"><span class="t">${T.cal}</span></a></div>`;
   document.getElementById("det").innerHTML=CFG.details.map(d=>`<div><small class="t">${d[lang][0]}</small><span class="t">${d[lang][1]}</span></div>`).join("");

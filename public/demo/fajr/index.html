@@ -497,7 +497,7 @@ function render(){
   $$(".medal b").forEach(b=>b.style.fontFamily=lang==="ur"?"var(--ur)":"");
   const M=CFG.main;$("#rFn").textContent=M[lang].fn;$("#rDay").textContent=M.day;$("#rMY").textContent=M[lang].my;$("#rHj").textContent=M[lang].hj;
   $("#saveBtn").href=ics(CFG.events[0],N.join(" & ")+" · "+CFG.events[0].en.n);$("#saveBtn").download="save-the-date.ics";
-  $("#evs").innerHTML=CFG.events.map((e,i)=>`<article class="ev"><div class="pic"><img src="${e.img}" alt=""><span class="tag">${lang==="ur"?"تقریب "+["۱","۲","۳","۴"][i]:"Event "+(i+1)}</span></div>
+  $("#evs").innerHTML=CFG.events.map((e,i)=>`<article class="ev"><div class="pic"><img src="${e.img}" alt="" onerror="this.style.display='none'"><span class="tag">${lang==="ur"?"تقریب "+["۱","۲","۳","۴"][i]:"Event "+(i+1)}</span></div>
     <div class="info"><div class="nm"><b style="${lang==="ur"?"font-family:var(--ur);font-size:28px":""}">${e[lang].n}</b>${lang==="en"?"<i>"+e.ur.n+"</i>":""}</div><div class="when rtl-able">${e[lang].w}</div><div class="where rtl-able">${e[lang].p}</div>
     <div class="row"><a class="p" href="${mapUrl(e)}" target="_blank" rel="noopener">${lang==="ur"?"راستہ":"Directions"}</a><a href="${ics(e,N.join(" & ")+" · "+e.en.n)}" download="${e.en.n}.ics">${lang==="ur"?"کیلنڈر":"Add to Calendar"}</a></div></div></article>`).join("");
   $("#progEye").textContent=CFG.progTitle[lang];
