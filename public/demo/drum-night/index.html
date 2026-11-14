@@ -1,0 +1,672 @@
+<!doctype html><meta charset="utf-8"><style id="bwWide">@media (min-width:600px) and (orientation:portrait){.poster,.paper,#bgv,.page,.bar .in{max-width:100%!important}}@media (min-width:900px) and (orientation:landscape){.poster,.paper,#bgv,.page,.bar .in{max-width:620px!important}}</style><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex">
+<style>#bwmark{position:fixed;left:50%;top:50%;z-index:2147483647;transform:translate(-50%,-50%) rotate(-24deg);pointer-events:none;user-select:none;-webkit-user-select:none;
+ font:600 clamp(22px,7.4vw,34px)/1.15 "Cormorant Garamond",Georgia,serif;letter-spacing:.18em;text-transform:uppercase;color:#fff;opacity:.16;text-align:center;white-space:nowrap;
+ text-shadow:0 0 1px rgba(0,0,0,.55),0 1px 6px rgba(0,0,0,.35);mix-blend-mode:normal}
+#bwmark small{display:block;font:500 clamp(9px,2.6vw,12px)/1.6 system-ui,sans-serif;letter-spacing:.42em;margin-top:4px}
+img,video{-webkit-user-drag:none;user-drag:none}
+body{-webkit-touch-callout:none}</style>
+<meta charset="utf-8">
+<title>Dholki Raat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Parisienne&family=Jost:wght@300;400;500&family=Noto+Nastaliq+Urdu:wght@400;600&family=Amiri:wght@400;700&display=swap">
+<style>
+/* Layout: "Dholki Raat". A dim courtyard with a dholak on the gadda; four beats on the dholak light the night and open the card. Inside: a butter-cream column, jhandiyan bunting over every section, a steel thaal you tap with a spoon to reveal the date, dholak-head countdown, gota-trimmed ticket cards for Mayun, Dholki and Mehndi, and a cheer meter for ladkiwale vs ladkewale. Deliberately one light theme. */
+:root{
+  --cream:#fff8e8; --paper:#fffdf6; --butter:#fdf0cc; --marigold:#f2a31b; --marigold-dk:#c97c0a; --pink:#d4457a; --pink-dk:#a82d5c;
+  --green:#3f8a4a; --green-dk:#2b6435; --ink:#3a2a1a; --ink-soft:#7f6a52; --gold:#c49a3c; --line:#f0e1bf;
+  --script:"Parisienne","Great Vibes",cursive;
+  --display:"Yeseva One","Didot",Georgia,serif;
+  --body:"Jost","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --urdu:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq",serif;
+  --arabic:"Amiri","Traditional Arabic",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%;overflow-x:hidden;max-width:100%}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--body);font-weight:300;font-size:16px;line-height:1.75}
+body.locked{overflow:hidden;height:100%}
+img{display:block;max-width:100%}
+[hidden]{display:none!important}
+button:focus-visible,a:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+.ur .t{font-family:var(--urdu);line-height:2.2}
+.ur{direction:rtl}
+
+/* ============ GATE ============ */
+#gate{position:fixed;inset:0;z-index:70;overflow:hidden;background:#2a1c10;touch-action:manipulation}
+.stage{position:absolute;left:50%;top:50%;aspect-ratio:752/1344;width:max(100vw, calc(100vh * 752 / 1344));transform:translate(-50%,-50%);transform-origin:52% 69%}
+.stage img{position:absolute;inset:0;width:100%;height:100%;filter:brightness(var(--b,.38)) saturate(var(--s,.7));transition:filter .6s ease}
+.stage .glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 30% at 50% 30%,rgba(255,200,110,var(--g,0)),transparent 70%);mix-blend-mode:screen;transition:background .6s}
+#gate.zoom .stage{transition:transform 1.8s cubic-bezier(.6,0,.2,1),filter 1.8s;transform:translate(-50%,-50%) scale(1.35);filter:blur(5px)}
+.drum{position:absolute;left:52%;top:69%;width:56%;aspect-ratio:2/1;transform:translate(-50%,-50%);border:none;background:transparent;border-radius:50%;cursor:pointer;padding:0;touch-action:manipulation}
+.drum::before,.drum::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,230,170,.9);animation:ring 1.8s ease-out infinite}
+.drum::after{animation-delay:.9s}
+#gate.done .drum::before,#gate.done .drum::after{display:none}
+@keyframes ring{0%{transform:scale(.6);opacity:0}30%{opacity:1}100%{transform:scale(1.2);opacity:0}}
+.stage.hit{animation:hit .28s ease-out}
+@keyframes hit{0%{translate:0 0}30%{translate:0 4px;scale:1.01}100%{translate:0 0}}
+.bol{position:absolute;left:52%;top:52%;transform:translate(-50%,-50%);font-family:var(--display);font-size:clamp(34px,10vw,48px);color:#ffe7a8;text-shadow:0 4px 18px rgba(0,0,0,.6);pointer-events:none;opacity:0}
+.bol.go{animation:bol .8s ease-out forwards}
+@keyframes bol{0%{opacity:0;transform:translate(-50%,-30%) scale(.6)}25%{opacity:1;transform:translate(-50%,-60%) scale(1.1)}100%{opacity:0;transform:translate(-50%,-120%) scale(1)}}
+.gtop{position:absolute;left:0;right:0;top:0;z-index:3;text-align:center;display:grid;justify-items:center;pointer-events:none;
+  padding-top:calc(env(safe-area-inset-top,0px) + 6vh);padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.gtop .k{font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:#f6e3b8}
+.gtop .n{font-family:var(--script);font-size:clamp(48px,13.5vw,66px);line-height:1.2;color:#fff3d4;text-shadow:0 3px 18px rgba(0,0,0,.55)}
+.gtop .d{font-family:var(--display);font-size:13px;letter-spacing:.3em;color:#f6e3b8}
+.gbot{position:fixed;left:0;right:0;bottom:0;z-index:3;display:grid;justify-items:center;gap:12px;text-align:center;pointer-events:none;
+  padding-bottom:calc(env(safe-area-inset-bottom,0px) + 7vh);padding-top:60px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));
+  background:linear-gradient(transparent,rgba(42,28,16,.75) 55%)}
+.gbot p{margin:0;font-size:11px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:#fff3d4}
+.beats{display:flex;gap:10px}
+.beats span{font-family:var(--display);font-size:13px;color:rgba(255,243,212,.45);padding:4px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,243,212,.35);transition:all .3s}
+.beats span.on{color:#3a2a1a;background:#ffd36b;box-shadow:none;transform:scale(1.08)}
+.gskip{pointer-events:auto;font:400 10.5px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:rgba(255,243,212,.75);background:none;border:none;border-bottom:1px solid rgba(255,243,212,.4);padding:6px 2px;cursor:pointer}
+#gate.done .gbot,#gate.done .gtop{opacity:0;transition:opacity .5s}
+#veil{position:fixed;inset:0;z-index:75;pointer-events:none;background:var(--cream);opacity:0}
+#veil.go{animation:veil 2.4s ease forwards}
+@keyframes veil{0%,40%{opacity:0}70%{opacity:1}100%{opacity:0}}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:80;width:100%;height:100%}
+
+/* ============ BAR ============ */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:41;background:var(--cream)}
+.bar{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);left:0;right:0;z-index:40;pointer-events:none}
+.bar .in{max-width:460px;margin:0 auto;display:flex;justify-content:flex-end;gap:6px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.chip{pointer-events:auto;display:inline-flex;align-items:center;gap:8px;font:400 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:rgba(255,253,246,.8);border:1px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.chip[aria-pressed="true"]{background:var(--pink);color:#fff;border-color:var(--pink)}
+.chip.urdu{font-family:var(--urdu);letter-spacing:0;text-transform:none;font-size:14px;padding-block:2px}
+.chip.mus{margin-right:auto}
+
+/* ============ PAGE ============ */
+.page{position:relative;max-width:460px;margin:0 auto;background:var(--paper);box-shadow:0 0 0 1px var(--line);padding-bottom:40px;overflow-x:clip}
+.pad{padding-left:max(24px, env(safe-area-inset-left, 0px));padding-right:max(24px, env(safe-area-inset-right, 0px))}
+.hero{position:relative;aspect-ratio:752/1344;max-width:100%;overflow:hidden}
+.hero .bg{position:absolute;inset:0 0 -8% 0;background:url(scene.webp) 50% 0/cover;will-change:transform}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(255,248,232,.5),rgba(255,248,232,0) 32%,rgba(255,248,232,0) 80%,var(--paper))}
+.hero .txt{position:absolute;z-index:2;left:0;right:0;top:0;padding-top:calc(env(safe-area-inset-top,0px) + 70px);text-align:center;display:grid;gap:2px;justify-items:center}
+.eyebrow{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--ink-soft)}
+.ur .eyebrow{letter-spacing:0;font-size:15px;text-transform:none}
+.hname{margin:0;font-weight:400;font-family:var(--script);font-size:clamp(50px,14vw,68px);line-height:1.15;color:var(--ink);white-space:nowrap}
+.hname .amp{font-family:var(--display);font-size:.4em;color:var(--pink);margin:0 .25em;vertical-align:.3em}
+.ur .hname{font-family:var(--urdu);font-size:clamp(34px,9vw,44px);line-height:2.1}
+.hsub{font-family:var(--display);font-size:14px;letter-spacing:.24em;color:var(--pink-dk)}
+
+/* bunting */
+.bunting{display:block;width:calc(100% + 48px);height:46px;margin:0 -24px 6px;overflow:visible}
+.bunting path.cord{fill:none;stroke:#c49a3c;stroke-width:1.2}
+.bunting .flag{transform-box:fill-box;transform-origin:50% 0;animation:flutter 2.6s ease-in-out infinite}
+@keyframes flutter{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(5deg)}}
+
+section{position:relative;padding-block:40px 52px;display:grid;grid-template-columns:minmax(0,1fr);gap:22px;text-align:center}
+section > *{min-width:0}
+.sh{display:grid;gap:6px;justify-items:center}
+.sh h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(30px,8.6vw,38px);line-height:1.15;color:var(--ink);text-wrap:balance;max-width:100%}
+.ur .sh h2{font-family:var(--urdu);font-size:26px;line-height:2.1}
+.sh .sub{font-family:var(--script);font-size:26px;color:var(--pink);line-height:1}
+.ur .sh .sub{font-family:var(--urdu);font-size:15px;line-height:2}
+.lede{max-width:30ch;margin:0 auto;font-size:16.5px}
+.bism{font-family:var(--arabic);font-size:22px;color:var(--green-dk);direction:rtl}
+.verse{font-style:italic;color:var(--ink-soft);font-size:14.5px;max-width:34ch;margin:0 auto}
+.verse b{display:block;font-style:normal;font-weight:400;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--pink);margin-top:6px}
+.fams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}
+.fams div{display:grid;gap:2px}
+.fams small{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--green)}
+.ur .fams small{letter-spacing:0;font-size:13px}
+.fams b{font-family:var(--display);font-weight:400;font-size:15px}
+.fams .amp{font-family:var(--script);font-size:40px;color:var(--marigold)}
+.corner{position:absolute;width:120px;pointer-events:none}
+.corner.a{right:-16px;top:6px;transform:scaleX(-1)}
+
+/* thaal tap */
+.steel{position:relative;width:min(250px,66vw);aspect-ratio:1;max-width:100%;margin:0 auto;border:none;padding:0;border-radius:50%;cursor:pointer;
+  background:radial-gradient(circle at 32% 28%,#ffffff,#dfe3e6 30%,#b4bbc1 62%,#8e969d 80%,#c9ced3);box-shadow:0 16px 36px rgba(58,42,26,.22),inset 0 -6px 14px rgba(0,0,0,.15)}
+.steel::before{content:"";position:absolute;inset:9%;border-radius:50%;background:radial-gradient(circle at 40% 35%,#f8f9fa,#d6dadd 70%);box-shadow:inset 0 3px 10px rgba(0,0,0,.18)}
+.steel .spoon{position:absolute;right:-6%;top:6%;width:42%;height:12px;border-radius:10px;background:linear-gradient(#f2f4f5,#9aa1a7);transform:rotate(-38deg);transform-origin:90% 50%;box-shadow:0 3px 6px rgba(0,0,0,.2);transition:transform .12s}
+.steel .spoon::before{content:"";position:absolute;left:-26px;top:-9px;width:32px;height:30px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#ffffff,#a9b0b6)}
+.steel.tap .spoon{transform:rotate(-14deg)}
+.steel.tap{animation:wob .35s ease-out}
+@keyframes wob{30%{transform:rotate(-3deg) scale(.98)}70%{transform:rotate(2deg)}}
+.steel .date{position:absolute;inset:9%;border-radius:50%;display:grid;place-items:center;align-content:center;gap:0;opacity:0;transform:scale(.6);transition:all .6s cubic-bezier(.3,1.6,.5,1)}
+.steel.open .date{opacity:1;transform:scale(1)}
+.steel .date small{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--green-dk)}
+.ur .steel .date small{letter-spacing:0;font-size:13px;font-family:var(--urdu)}
+.steel .date b{font-family:var(--display);font-weight:400;font-size:60px;line-height:1;color:var(--pink-dk)}
+.steel .date em{font-style:normal;font-family:var(--script);font-size:26px;color:var(--ink)}
+.steel .taps{position:absolute;inset:9%;display:grid;place-items:center;font-family:var(--display);font-size:15px;letter-spacing:.2em;color:#7c858c;transition:opacity .3s}
+.steel.open .taps{opacity:0}
+.hint{font-size:12.5px;color:var(--ink-soft);font-style:italic}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:400 11px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;text-decoration:none;color:#fff;background:var(--pink);border:none;border-radius:999px;padding:13px 22px;cursor:pointer}
+.ur .pill{letter-spacing:0;text-transform:none;font-family:var(--urdu);font-size:13px;padding-block:5px}
+.pill.line{background:transparent;color:var(--pink-dk);box-shadow:inset 0 0 0 1px var(--pink)}
+.pill.green{background:var(--green)}
+.pill svg{width:14px;height:14px}
+
+/* dholak countdown */
+.drums{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;direction:ltr}
+.dh{position:relative;display:grid;justify-items:center;gap:4px}
+.dh .head{position:relative;width:100%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 45% 40%,#fbf1dc,#ead3a6 70%,#c99a55);box-shadow:0 0 0 4px #7a4a22,0 0 0 6px #c49a3c,0 8px 16px rgba(58,42,26,.25)}
+.dh .head::after{content:"";position:absolute;inset:-9px;border-radius:50%;background:repeating-conic-gradient(from 0deg,#e9d7b0 0 6deg,transparent 6deg 30deg);-webkit-mask:radial-gradient(circle,transparent 60%,#000 61%);mask:radial-gradient(circle,transparent 60%,#000 61%);z-index:-1}
+.dh b{font-family:var(--display);font-weight:400;font-size:clamp(20px,6vw,26px);color:var(--ink);font-variant-numeric:tabular-nums}
+.dh b.tick{animation:thump .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes thump{0%{transform:scale(1.35)}100%{transform:scale(1)}}
+.dh small{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px}
+
+/* gota ticket events */
+.evs{display:grid;gap:26px}
+.tk{position:relative;background:var(--paper);border-radius:14px;padding:12px 12px 18px;transform:rotate(var(--r,0deg));
+  box-shadow:0 12px 30px rgba(58,42,26,.14);outline:2px dashed var(--c);outline-offset:-7px;text-align:center;display:grid;gap:6px}
+.tk::before,.tk::after{content:"";position:absolute;top:58%;width:22px;height:22px;border-radius:50%;background:var(--cream)}
+.tk::before{left:-11px}.tk::after{right:-11px}
+.tk .ph{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden}
+.tk .ph img{width:100%;height:100%;object-fit:cover}
+.tk .ph span{position:absolute;left:10px;top:10px;font-family:var(--display);font-size:11px;letter-spacing:.2em;color:#fff;background:var(--c);padding:5px 10px;border-radius:999px}
+.tk h3{margin:6px 0 0;font-family:var(--script);font-weight:400;font-size:44px;line-height:1;color:var(--c)}
+.ur .tk h3{font-family:var(--urdu);font-size:26px;line-height:2.1}
+.tk .when{font-family:var(--display);font-size:15px}
+.tk .where{font-size:14px;color:var(--ink-soft)}
+.tk .tear{border-top:2px dashed var(--line);margin:4px 6px 2px}
+.tk .acts{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+
+/* program */
+.tl{display:grid;gap:12px;text-align:left;max-width:330px;margin:0 auto;width:100%}
+.ur .tl{text-align:right}
+.tl .row{display:grid;grid-template-columns:70px 1fr;gap:12px;align-items:center;padding:10px 14px;border-radius:12px;background:var(--butter)}
+.ur .tl .row{grid-template-columns:1fr 70px}.ur .tl .row time{order:2}
+.tl .row:nth-child(3n+2){background:#fde3ec}.tl .row:nth-child(3n){background:#e3f1df}
+.tl time{font-family:var(--display);font-size:15px;direction:ltr}
+.tl b{display:block;font-weight:400;font-size:15px}
+.tl span{font-size:13px;color:var(--ink-soft)}
+
+/* cheer meter */
+.cheer{display:grid;gap:14px}
+.meterbar{position:relative;height:16px;border-radius:999px;background:linear-gradient(90deg,var(--pink) 0 50%,var(--green) 50% 100%);overflow:hidden;box-shadow:inset 0 1px 3px rgba(0,0,0,.2)}
+.meterbar i{position:absolute;top:-4px;bottom:-4px;width:6px;border-radius:3px;background:#fff;box-shadow:0 0 0 2px var(--ink);left:calc(var(--p,50%) - 3px);transition:left .35s cubic-bezier(.3,1.5,.5,1)}
+.teams{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.teams button{font:400 14px/1.2 var(--body);padding:14px 8px;border-radius:14px;border:none;color:#fff;cursor:pointer;transition:transform .1s}
+.teams button:active{transform:scale(.95)}
+.teams .g{background:var(--pink)}.teams .b{background:var(--green)}
+.teams button{opacity:.92}.teams button.mine{opacity:1;box-shadow:0 0 0 3px #fff,0 0 0 5px currentColor}.teams .g.mine{color:#fff;box-shadow:0 0 0 3px #fffaf0,0 0 0 5px var(--pink)}.teams .b.mine{box-shadow:0 0 0 3px #fffaf0,0 0 0 5px var(--green)}
+.teams b{display:block;font-family:var(--display);font-weight:400;font-size:22px}
+.ur .teams button{font-family:var(--urdu)}
+.cheer p{margin:0;font-size:13px;color:var(--ink-soft)}
+
+/* venue */
+.map{position:relative;aspect-ratio:16/10;max-width:100%;border-radius:14px;overflow:hidden;background:#fbf0d8;box-shadow:inset 0 0 0 1px var(--line)}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.map .pin{position:absolute;left:44%;top:46%;transform:translate(-50%,-100%)}
+.map .pin svg{position:static;width:30px;height:38px;color:var(--pink)}
+.venue b{font-family:var(--display);font-weight:400;font-size:20px;display:block}
+.venue span{color:var(--ink-soft);font-size:14.5px}
+
+.cards{display:grid;gap:12px;text-align:left}
+.ur .cards{text-align:right}
+.card{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:16px 18px;border-radius:14px;background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)}
+.card .sw{display:flex;gap:5px;padding-top:4px}
+.card .sw i{width:16px;height:22px;border-radius:3px 3px 8px 8px;background-color:var(--c);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.2) 0 2px,transparent 2px 5px);box-shadow:0 2px 4px rgba(58,42,26,.18)}
+.card b{display:block;font-weight:400;font-size:15px}
+.card span{font-size:13.5px;color:var(--ink-soft)}
+.card svg{width:22px;height:22px;color:var(--pink);margin-top:3px}
+
+form{display:grid;gap:16px;text-align:left;padding:24px 20px;border-radius:16px;background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)}
+.ur form{text-align:right}
+.fl{display:grid;gap:8px;font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--green-dk)}
+.ur .fl{letter-spacing:0;font-size:14px;text-transform:none;font-family:var(--urdu)}
+input[type=text]{font:300 16px var(--body);color:var(--ink);background:transparent;border:none;border-bottom:1px solid var(--line);border-radius:0;padding:10px 2px;width:100%}
+input::placeholder{color:#c8b48f}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.att{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pick{position:relative}
+.pick input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.pick span{display:block;text-align:center;padding:11px 4px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);font-size:13px;letter-spacing:.04em;text-transform:none;color:var(--ink-soft);font-family:var(--body)}
+.ur .pick span{font-family:var(--urdu);line-height:2;padding-block:4px}
+.pick input:checked + span{background:var(--pink);color:#fff;box-shadow:none}
+.pick input:focus-visible + span{outline:2px solid var(--pink);outline-offset:2px}
+.stepper{display:flex;align-items:center;gap:14px;direction:ltr}
+.stepper button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:18px;cursor:pointer}
+.stepper output{font-family:var(--display);font-size:24px;min-width:28px;text-align:center}
+.thanks{padding:30px 20px;border-radius:16px;background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)}
+.thanks .big{font-family:var(--script);font-size:52px;line-height:1;color:var(--pink)}
+.ur .thanks .big{font-family:var(--urdu);font-size:28px;line-height:2}
+.wishes{display:grid;gap:10px;text-align:left}
+.ur .wishes{text-align:right}
+.wish{padding:14px 16px;border-radius:14px;background:var(--cream);box-shadow:inset 0 0 0 1px var(--line)}
+.wish p{margin:0 0 2px;font-style:italic;font-size:15px}
+.wish small{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--pink)}
+.wf{display:flex;gap:8px;flex-wrap:wrap;padding:0;background:none;box-shadow:none;border-radius:0}
+.wf input{flex:1 1 200px}
+footer{text-align:center;display:grid;gap:6px;padding-top:30px;justify-items:center}
+footer .sig{font-family:var(--script);font-size:clamp(40px,12vw,54px);line-height:1.1;max-width:100%}
+footer .fam{font-size:13.5px;color:var(--ink-soft)}
+footer .hash{font-size:11px;letter-spacing:.3em;color:var(--pink-dk)}
+footer .demo{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);opacity:.7;margin-top:10px}
+@media (prefers-reduced-motion:reduce){.drum::before,.drum::after,.bunting .flag{animation:none}#gate.zoom .stage{transition-duration:.01s}}
+
+/* ============ POSTER (card face) ============ */
+#hero{display:none}
+.poster{position:relative;height:min(100svh,880px);min-height:620px;max-width:100%;overflow:hidden;background:#120c08 url(poster.webp) 50% 100%/cover no-repeat;color:#fff6e6;display:grid;align-content:start;justify-items:center;text-align:center}
+.poster::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(10,6,4,.55),rgba(10,6,4,.15) 46%,rgba(10,6,4,0) 62%,rgba(10,6,4,.35));pointer-events:none}
+.poster .pt{position:relative;z-index:1;display:grid;justify-items:center;gap:6px;padding:calc(env(safe-area-inset-top,0px) + 72px) 28px 0}
+.poster .ar{font-family:"Amiri",serif;font-size:21px;color:#f3c66b;direction:rtl;line-height:1.6}
+.poster .tw{font-family:"Jost",sans-serif;font-size:9.5px;font-weight:500;letter-spacing:.38em;text-transform:uppercase;color:rgba(255,246,230,.82);margin-top:6px}
+.poster .nm{font-family:"Parisienne",cursive;font-weight:400;font-size:clamp(54px,16vw,74px);line-height:1;color:#fff6e6;text-shadow:0 2px 24px rgba(0,0,0,.45);margin-top:10px}
+.poster .am{font-family:"Yeseva One",serif;font-size:22px;color:#f3c66b;line-height:1.2}
+.poster .rule{width:56px;height:1px;background:linear-gradient(90deg,transparent,#f3c66b,transparent);margin:14px 0 6px}
+.poster .dt{font-family:"Yeseva One",serif;font-size:15px;letter-spacing:.2em;color:#fff6e6}
+.poster .pl{font-family:"Jost",sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,246,230,.75)}
+.poster .cue{position:absolute;z-index:1;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);font-family:"Jost",sans-serif;font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,246,230,.8);display:grid;justify-items:center;gap:6px}
+.poster .cue i{width:1px;height:28px;background:linear-gradient(#f3c66b,transparent);animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+.poster .pt > *{transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+body.locked .poster .pt > *{opacity:0;transform:translateY(18px)}
+.poster .pt > :nth-child(2){transition-delay:.15s}.poster .pt > :nth-child(3){transition-delay:.3s}.poster .pt > :nth-child(4){transition-delay:.45s}.poster .pt > :nth-child(5){transition-delay:.6s}.poster .pt > :nth-child(n+6){transition-delay:.8s}
+
+/* light poster: the card's own ivory photograph behind the names */
+.poster{background:#f6efe4 url(scene.webp) 50% 100%/cover no-repeat!important;color:#3a2a20}
+.poster::before{background:linear-gradient(rgba(253,248,240,.86),rgba(253,248,240,.62) 42%,rgba(253,248,240,.15) 66%,rgba(253,248,240,0) 80%)!important}
+.poster .ar{color:#9a7438!important}.poster .tw{color:#5a4636!important}
+.poster .nm{color:#8a1f45!important;text-shadow:0 1px 14px rgba(255,250,240,.95)!important}
+.poster .am{color:#9a7438!important}.poster .rule{background:linear-gradient(90deg,transparent,#9a7438,transparent)!important}
+.poster .dt{color:#3a2a20!important}.poster .pl{color:#5a4636!important}
+.poster .cue{color:#5a4636!important}.poster .cue i{background:linear-gradient(#9a7438,transparent)!important}
+</style><style>#rsvp > *:not(.come){display:none!important}
+#rsvp .come{display:grid;justify-items:center;gap:12px;text-align:center}
+#rsvp .come h2{margin:0}#rsvp .come p{margin:0;opacity:.75;font-size:14.5px}
+#rsvp .comebtn{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:999px;background:#2f2620;color:#fff8ec!important;text-decoration:none;font-size:15px;letter-spacing:.04em;box-shadow:0 10px 24px rgba(40,25,15,.18);transition:transform .2s}
+#rsvp .comebtn:active{transform:scale(.96)}</style>
+
+<!-- ============ GATE ============ -->
+<div id="gate">
+  <div class="stage" id="stage">
+    <img src="scene.webp" alt="" draggable="false">
+    <div class="glow"></div>
+    <button class="drum" id="drum" aria-label="Tap the dholak"></button>
+    <div class="bol" id="bol">Dha!</div>
+  </div>
+  <div class="gtop"><div class="k">Dholki Raat</div><div class="n">Sana &amp; Fahad</div><div class="d">24 · 25 · 26 NOV</div></div>
+  <div class="gbot"><p id="gHint">Tap the dholak four times</p><div class="beats" id="beats"><span>Dha</span><span>Dhin</span><span>Dhin</span><span>Dha</span></div><button class="gskip" id="gSkip">Open the card</button></div>
+</div>
+<div id="veil"></div>
+<canvas id="fx"></canvas>
+
+<div class="bar"><div class="in">
+  <button class="chip mus" id="music" aria-pressed="true">♪ <span data-k="music">Music</span></button>
+  <button class="chip" id="en" aria-pressed="true">EN</button><button class="chip urdu" id="ur" aria-pressed="false">اردو</button>
+</div></div>
+<audio id="track" loop preload="auto"></audio>
+
+<main class="page" id="page">
+  <div class="poster" role="img" aria-label="Invitation">
+    <div class="pt"><div class="ar">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div><div class="tw">Together with their families</div>
+      <div class="nm">Sana</div><div class="am">&amp;</div><div class="nm" style="margin-top:0">Fahad</div>
+      <div class="rule"></div><div class="dt">24 · 25 · 26 NOVEMBER 2026</div><div class="pl">Mayun · Dholki · Mehndi · Karachi</div></div>
+    <div class="cue">Scroll<i></i></div>
+  </div>
+  <header class="hero" id="hero">
+    <div class="bg" id="heroBg"></div>
+    <div class="txt pad">
+      <div class="eyebrow t" data-k="ey">Dholki, Mayun &amp; Mehndi</div>
+      <h1 class="hname t" data-k="names">Sana<span class="amp">&amp;</span>Fahad</h1>
+      <div class="hsub t" data-k="hs">Three nights of geet, haldi &amp; mehndi</div>
+    </div>
+  </header>
+
+  <section class="pad">
+    <img class="corner a" src="corner.webp" alt="">
+    <div class="bism">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <p class="lede t" data-k="lede">Bring your loudest voice and your best tappe. The dholak is tuned, the chai is on, and the mehndi cones are ready.</p>
+    <div class="fams">
+      <div><small class="t" data-k="dOf">Daughter of</small><b class="t" data-k="bf">Mr &amp; Mrs Arif Siddiqui</b></div>
+      <div class="amp">&amp;</div>
+      <div><small class="t" data-k="sOf">Son of</small><b class="t" data-k="gf">Mr &amp; Mrs Naeem Baig</b></div>
+    </div>
+    <p class="verse t" data-k="verse">“And He placed between you affection and mercy.”<b>Surah Ar-Rum · 30:21</b></p>
+  </section>
+
+  <section class="pad">
+    <div class="sh"><h2 class="t" data-k="thH">Thaal &amp; chamach</h2><div class="sub t" data-k="thS">Tap the thaal three times</div></div>
+    <button class="steel" id="steel" aria-label="Tap the steel thaal to reveal the date">
+      <span class="spoon"></span>
+      <span class="taps" id="taps">· · ·</span>
+      <span class="date"><small class="t" data-k="mehndiDay">Mehndi night</small><b>26</b><em>November 2026</em></span>
+    </button>
+    <div class="hint t" data-k="thN" id="thHint">Like the aunties do at every dholki</div>
+    <div><a class="pill" id="saveDate" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="t" data-k="save">Save the date</span></a></div>
+  </section>
+
+  <section class="pad">
+    <div class="sh"><h2 class="t" data-k="cdH">Until the mehndi</h2><div class="sub t" data-k="cdS">Count the beats</div></div>
+    <div class="drums" id="cd"></div>
+  </section>
+
+  <section class="pad">
+    <div class="sh"><h2 class="t" data-k="evH">Three nights</h2><div class="sub t" data-k="evS">Haldi, geet and mehndi</div></div>
+    <div class="evs" id="evs"></div>
+  </section>
+
+  <section class="pad">
+    <div class="sh"><h2 class="t" data-k="tlH">Dholki night</h2><div class="sub t" data-k="tlS">Wednesday, 25 November</div></div>
+    <div class="tl" id="tl"></div>
+  </section>
+
+  <section class="pad">
+    <div class="sh"><h2 class="t" data-k="chH">Ladkiwale vs Ladkewale</h2><div class="sub t" data-k="chS">Whose side are you on?</div></div>
+    <div class="cheer">
+      <div class="meterbar" id="mbar"><i></i></div>
+      <div class="teams"><button class="g" id="tg"><b id="cg">0</b><span class="t" data-k="tG">Ladkiwale</span></button><button class="b" id="tb"><b id="cb">0</b><span class="t" data-k="tB">Ladkewale</span></button></div>
+    </div>
+  </section>
+
+  <section class="pad venue">
+    <div class="sh"><h2 class="t" data-k="vH">Where the dholak plays</h2></div>
+    <div class="map" aria-hidden="true">
+      <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect width="400" height="250" fill="#fbf0d8"/>
+        <g stroke="#fffdf6" stroke-width="9" fill="none" stroke-linecap="round"><path d="M-10 90 L410 60"/><path d="M90 -10 L150 260"/><path d="M300 -10 L270 260"/><path d="M-10 190 L410 170"/></g>
+        <g stroke="#f0e1bf" stroke-width="2" fill="none"><path d="M40 -10 L60 260"/><path d="M200 -10 L210 260"/><path d="M-10 130 L410 120"/></g>
+        <rect x="160" y="100" width="44" height="34" rx="5" fill="#fde3ec"/><circle cx="330" cy="210" r="20" fill="#e3f1df"/></svg>
+      <div class="pin"><svg viewBox="0 0 30 38"><path d="M15 37s-13-12.6-13-22a13 13 0 0 1 26 0c0 9.4-13 22-13 22z" fill="currentColor"/><circle cx="15" cy="15" r="5" fill="#fffdf6"/></svg></div>
+    </div>
+    <div><b class="t" data-k="vName">Siddiqui House</b><span class="t" data-k="vAddr">Block H, North Nazimabad, Karachi</span></div>
+    <div><a class="pill line" href="https://www.google.com/maps/search/?api=1&query=North%20Nazimabad%20Block%20H%20Karachi" target="_blank" rel="noopener"><span class="t" data-k="openMap">Open in Google Maps</span></a></div>
+  </section>
+
+  <section class="pad">
+    <div class="sh"><h2 class="t" data-k="dcH">What to wear</h2><div class="sub t" data-k="dcS">The brighter the better</div></div>
+    <div class="cards" id="dress"></div>
+  </section>
+
+  <section class="pad">
+    <div class="sh"><h2 class="t" data-k="gH">Good to know</h2></div>
+    <div class="cards">
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="8"/><path d="M8 12h8M12 8v8"/></svg><div><b class="t" data-k="kH">Bring your tappe</b><span class="t" data-k="k1">The dholak is open to everyone. Bring a song, a spoon, or just clap along.</span></div></div>
+      <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M5 20c0-6 3-10 7-10s7 4 7 10"/><path d="M12 10V4M9 6l3-2 3 2"/></svg><div><b class="t" data-k="mH">Mehndi artist on site</b><span class="t" data-k="m1">Ladies, keep a hand free. Our mehndi artist will be there all evening on the Mehndi night.</span></div></div>
+    </div>
+  </section>
+
+  <section class="pad" id="rsvp"><div class="come"><div class="sh"><h2>Aap aa rahe hain na?</h2></div><p>Bas ek tap, aur dulha dulhan ko pata chal jayega.</p><a class="comebtn" id="comeBtn" href="#" target="_blank" rel="noopener">Hum zaroor aayenge 🤍</a></div>
+    <div class="sh"><h2 class="t">RSVP</h2><div class="sub t" data-k="rS">Kindly reply by 20 November</div></div>
+    <form id="rform" novalidate>
+      <label class="fl"><span class="t" data-k="fN">Your name</span><input type="text" id="rname" placeholder="Ayesha Malik"></label>
+      <div class="fl"><span class="t" data-k="fA">Will you come?</span>
+        <div class="att">
+          <label class="pick"><input type="radio" name="att" id="att-y" checked><span class="t" data-k="yes">Count me in</span></label>
+          <label class="pick"><input type="radio" name="att" id="att-n"><span class="t" data-k="no">Sadly, no</span></label>
+        </div>
+      </div>
+      <div class="fl" id="fnBlock"><span class="t" data-k="fF">Which nights</span><div class="picks" id="picks"></div></div>
+      <div class="fl" id="gBlock"><span class="t" data-k="fG">Guests including you</span>
+        <div class="stepper"><button type="button" id="gm" aria-label="Fewer guests">−</button><output id="gc">2</output><button type="button" id="gp" aria-label="More guests">+</button></div>
+      </div>
+      <button class="pill" type="submit" style="padding-block:15px"><span class="t" data-k="send">Send reply</span></button>
+      <p id="rerr" class="t" style="margin:0;color:var(--pink-dk);font-size:13.5px" hidden></p>
+    </form>
+    <div class="thanks" id="thanks" hidden></div>
+  </section>
+
+  <section class="pad">
+    <div class="sh"><h2 class="t" data-k="wH">Duas &amp; dhamaal</h2></div>
+    <div class="wishes" id="wishes">
+      <div class="wish"><p>Allah dono ko hamesha khush rakhe! Dholak main bajaungi.</p><small>Khala Jaan</small></div>
+      <div class="wish"><p>Fahad bhai ki team ki dance practice shuru ho chuki hai. Ladkiwale tayyar raho!</p><small>Bilal · groom's cousin</small></div>
+    </div>
+    <form class="wf" id="wf"><input type="text" id="wt" placeholder="Write a dua or a dare"><button class="pill" type="submit"><span class="t" data-k="post">Post</span></button></form>
+  </section>
+
+  <footer class="pad">
+    <img src="corner.webp" alt="" style="width:110px;transform:rotate(-40deg)">
+    <div class="sig">Sana &amp; Fahad</div>
+    <div class="fam t" data-k="foot">With love, the Siddiqui and Baig families</div>
+    <div class="hash">#SanaKiDholki</div>
+    <div class="demo">Demo invitation · sample details</div>
+  </footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const G=!!(window.gsap&&window.ScrollTrigger)&&!reduce;if(G)gsap.registerPlugin(ScrollTrigger);
+document.body.classList.add("locked");
+
+/* ---------- bunting over each section ---------- */
+const FC=["#f2a31b","#d4457a","#3f8a4a","#fbd34d","#e86a9a","#6fb36a"];
+document.querySelectorAll("section").forEach((sec,si)=>{const n=9;let f="";for(let i=0;i<n;i++){const x=10+i*(380/(n-1)),y=4+Math.sin(i/(n-1)*Math.PI)*14;f+=`<path class="flag" style="animation-delay:${(i*.17).toFixed(2)}s" d="M${x-11} ${y} L${x+11} ${y} L${x} ${y+22}Z" fill="${FC[(i+si)%FC.length]}"/>`}
+  sec.insertAdjacentHTML("afterbegin",`<svg class="bunting" viewBox="0 0 400 46" preserveAspectRatio="none" aria-hidden="true"><path class="cord" d="M0 2 Q200 34 400 2"/>${f}</svg>`)});
+
+/* ---------- DATA ---------- */
+const EV=[
+ {id:"mayun",img:"mayun.webp",c:"#e9a20f",start:"2026-11-24T17:00:00+05:00",end:"2026-11-24T21:00:00+05:00",q:"North Nazimabad Block H Karachi",
+  en:{n:"Mayun",w:"Tuesday · 24 November · 5:00 pm",p:"Siddiqui House, North Nazimabad, Karachi",dm:"Women: haldi yellow and green",dmm:"Men: white or yellow kurta"},
+  ur:{n:"مایوں",w:"منگل · 24 نومبر · شام پانچ بجے",p:"صدیقی ہاؤس، نارتھ ناظم آباد، کراچی",dm:"خواتین: ہلدی پیلا اور ہرا",dmm:"مرد: سفید یا پیلا کرتا"},sw:["#f6c21a","#3f8a4a","#fff4c9"]},
+ {id:"dholki",img:"dholki.webp",c:"#d4457a",start:"2026-11-25T20:00:00+05:00",end:"2026-11-26T00:30:00+05:00",q:"North Nazimabad Block H Karachi",
+  en:{n:"Dholki",w:"Wednesday · 25 November · 8:00 pm",p:"Siddiqui House, North Nazimabad, Karachi",dm:"Women: pinks, greens and gota",dmm:"Men: kurta with a bright waistcoat"},
+  ur:{n:"ڈھولکی",w:"بدھ · 25 نومبر · رات آٹھ بجے",p:"صدیقی ہاؤس، نارتھ ناظم آباد، کراچی",dm:"خواتین: گلابی، ہرا اور گوٹا",dmm:"مرد: کرتا اور شوخ واسکٹ"},sw:["#d4457a","#3f8a4a","#f2a31b"]},
+ {id:"mehndi",img:"mehndi.webp",c:"#3f8a4a",start:"2026-11-26T20:00:00+05:00",end:"2026-11-27T01:00:00+05:00",q:"Gulshan-e-Iqbal Karachi",
+  en:{n:"Mehndi",w:"Thursday · 26 November · 8:00 pm",p:"Rang Mahal Lawn, Gulshan-e-Iqbal, Karachi",dm:"Women: marigold, green and pink",dmm:"Men: kurta and a colourful dupatta"},
+  ur:{n:"مہندی",w:"جمعرات · 26 نومبر · رات آٹھ بجے",p:"رنگ محل لان، گلشنِ اقبال، کراچی",dm:"خواتین: گیندا، ہرا اور گلابی",dmm:"مرد: کرتا اور رنگین دوپٹہ"},sw:["#f2a31b","#3f8a4a","#d4457a"]}
+];
+const TL={en:[["8:00 pm","Chai and pakoray","Guests settle on the gadda"],["8:30 pm","Dholak starts","Tappe, boliyan and thaal chamach"],["9:30 pm","Dance-off","Ladkiwale vs Ladkewale"],["10:30 pm","Khana","Biryani, kebab and gajar ka halwa"],["11:30 pm","Last round","Everyone on the dholak"]],
+ ur:[["8:00 pm","چائے اور پکوڑے","مہمان گدے پر"],["8:30 pm","ڈھولک شروع","ٹپے، بولیاں اور تھال چمچ"],["9:30 pm","ڈانس مقابلہ","لڑکی والے بمقابلہ لڑکے والے"],["10:30 pm","کھانا","بریانی، کباب اور گاجر کا حلوہ"],["11:30 pm","آخری دور","سب ڈھولک پر"]]};
+const T={
+ en:{music:"Music",ey:"Dholki, Mayun &amp; Mehndi",names:'Sana<span class="amp">&amp;</span>Fahad',hs:"Three nights of geet, haldi &amp; mehndi",
+  lede:"Bring your loudest voice and your best tappe. The dholak is tuned, the chai is on, and the mehndi cones are ready.",
+  dOf:"Daughter of",sOf:"Son of",bf:"Mr &amp; Mrs Arif Siddiqui",gf:"Mr &amp; Mrs Naeem Baig",verse:"“And He placed between you affection and mercy.”<b>Surah Ar-Rum · 30:21</b>",
+  thH:"Thaal &amp; chamach",thS:"Tap the thaal three times",thN:"Like the aunties do at every dholki",mehndiDay:"Mehndi night",save:"Save the date",
+  cdH:"Until the mehndi",cdS:"Count the beats",evH:"Three nights",evS:"Haldi, geet and mehndi",tlH:"Dholki night",tlS:"Wednesday, 25 November",
+  chH:"Ladkiwale vs Ladkewale",chS:"Whose side are you on?",tG:"Ladkiwale",tB:"Ladkewale",chP:"Tap to cheer. The dance-off is on Dholki night.",
+  vH:"Where the dholak plays",vName:"Siddiqui House",vAddr:"Block H, North Nazimabad, Karachi",openMap:"Open in Google Maps",dcH:"What to wear",dcS:"The brighter the better",
+  gH:"Good to know",kH:"Bring your tappe",k1:"The dholak is open to everyone. Bring a song, a spoon, or just clap along.",mH:"Mehndi artist on site",m1:"Ladies, keep a hand free. Our mehndi artist will be there all evening on the Mehndi night.",
+  rS:"Kindly reply by 20 November",fN:"Your name",fA:"Will you come?",yes:"Count me in",no:"Sadly, no",fF:"Which nights",fG:"Guests including you",send:"Send reply",
+  wH:"Duas &amp; dhamaal",post:"Post",foot:"With love, the Siddiqui and Baig families",map:"Directions",cal:"Add to calendar",
+  days:"Days",hrs:"Hours",min:"Mins",sec:"Secs",errName:"Please write your name so the family knows who replied.",errFn:"Please choose at least one night.",
+  tyYes:(n,g,f)=>`Thank you, ${n}! ${g} ${g>1?"guests":"guest"} noted for ${f}. Warm up your voice.`,tyNo:n=>`Thank you, ${n}. We will miss you on the dholak.`,thanks:"Shukriya",you:"You · just now",
+  hint1:"Two more",hint2:"One more",hint3:"Here it is!",bHint:"Tap the dholak four times",bMore:"Keep the beat going"},
+ ur:{music:"آواز",ey:"ڈھولکی، مایوں اور مہندی",names:'ثنا<span class="amp">اور</span>فہد',hs:"گیت، ہلدی اور مہندی کی تین راتیں",
+  lede:"اپنی سب سے اونچی آواز اور بہترین ٹپے ساتھ لائیں۔ ڈھولک تیار ہے، چائے چڑھی ہے اور مہندی کے کون بھرے ہیں۔",
+  dOf:"صاحبزادی",sOf:"صاحبزادے",bf:"جناب و بیگم عارف صدیقی",gf:"جناب و بیگم نعیم بیگ",verse:"”اور تمہارے درمیان محبت اور رحمت رکھ دی۔“<b>سورۃ الروم · 30:21</b>",
+  thH:"تھال اور چمچ",thS:"تھال پر تین بار بجائیں",thN:"جیسے ہر ڈھولکی میں خالائیں بجاتی ہیں",mehndiDay:"مہندی کی رات",save:"تاریخ محفوظ کریں",
+  cdH:"مہندی میں باقی",cdS:"تھاپ گنیں",evH:"تین راتیں",evS:"ہلدی، گیت اور مہندی",tlH:"ڈھولکی کی رات",tlS:"بدھ، 25 نومبر",
+  chH:"لڑکی والے بمقابلہ لڑکے والے",chS:"آپ کس طرف ہیں؟",tG:"لڑکی والے",tB:"لڑکے والے",chP:"ٹیپ کر کے داد دیں۔ ڈانس مقابلہ ڈھولکی کی رات ہے۔",
+  vH:"ڈھولک کہاں بجے گی",vName:"صدیقی ہاؤس",vAddr:"بلاک ایچ، نارتھ ناظم آباد، کراچی",openMap:"گوگل میپس پر کھولیں",dcH:"کیا پہنیں",dcS:"جتنا شوخ اتنا اچھا",
+  gH:"ضروری باتیں",kH:"اپنے ٹپے لائیں",k1:"ڈھولک سب کے لیے ہے۔ گانا، چمچ یا بس تالیاں لے آئیں۔",mH:"مہندی آرٹسٹ موجود",m1:"خواتین ایک ہاتھ خالی رکھیں، مہندی کی رات آرٹسٹ پوری شام موجود ہوگی۔",
+  rS:"براہِ کرم 20 نومبر تک جواب دیں",fN:"آپ کا نام",fA:"کیا آپ آئیں گے؟",yes:"ضرور",no:"معذرت",fF:"کون سی راتیں",fG:"آپ سمیت مہمان",send:"جواب بھیجیں",
+  wH:"دعائیں اور دھمال",post:"بھیجیں",foot:"محبت کے ساتھ، صدیقی اور بیگ خاندان",map:"راستہ",cal:"کیلنڈر میں شامل کریں",
+  days:"دن",hrs:"گھنٹے",min:"منٹ",sec:"سیکنڈ",errName:"براہِ کرم اپنا نام لکھیں۔",errFn:"کم از کم ایک رات منتخب کریں۔",
+  tyYes:(n,g,f)=>`شکریہ ${n}! ${g} مہمان، ${f}۔ آواز تیار رکھیں۔`,tyNo:n=>`شکریہ ${n}، ڈھولک پر آپ کی کمی رہے گی۔`,thanks:"شکریہ",you:"آپ · ابھی",
+  hint1:"دو بار اور",hint2:"ایک بار اور",hint3:"یہ رہی!",bHint:"ڈھولک پر چار بار تھاپ دیں",bMore:"تھاپ جاری رکھیں"}
+};
+let lang="en";
+const gfmt=s=>new Date(s).toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,"");
+const calUrl=e=>"https://calendar.google.com/calendar/render?"+new URLSearchParams({action:"TEMPLATE",text:e.en.n+" · Sana & Fahad",dates:gfmt(e.start)+"/"+gfmt(e.end),location:e.en.p});
+document.getElementById("saveDate").href=calUrl(EV[2]);
+
+function render(){
+  const box=document.getElementById("evs");box.innerHTML="";
+  EV.forEach((e,i)=>{const x=e[lang],a=document.createElement("article");a.className="tk";a.style.setProperty("--c",e.c);a.style.setProperty("--r",[-1.4,1.2,-.8][i]+"deg");
+    a.innerHTML=`<div class="ph"><img src="${e.img}" alt="" loading="lazy"><span>0${i+1}</span></div><h3>${x.n}</h3><div class="when t">${x.w}</div><div class="where t">${x.p}</div><div class="tear"></div>
+      <div class="acts"><a class="pill" style="background:${e.c}" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(e.q)}" target="_blank" rel="noopener"><span class="t">${T[lang].map}</span></a><a class="pill line" href="${calUrl(e)}" target="_blank" rel="noopener"><span class="t">${T[lang].cal}</span></a></div>`;
+    box.appendChild(a)});
+  document.getElementById("tl").innerHTML=TL[lang].map(r=>`<div class="row"><time>${r[0]}</time><div><b class="t">${r[1]}</b><span class="t">${r[2]}</span></div></div>`).join("");
+  document.getElementById("dress").innerHTML=EV.map(e=>`<div class="card"><div class="sw">${e.sw.map(c=>`<i style="--c:${c}"></i>`).join("")}</div><div><b class="t">${e[lang].n}</b><span class="t">${e[lang].dm}<br>${e[lang].dmm}</span></div></div>`).join("");
+  const p=document.getElementById("picks");const was=[...p.querySelectorAll("input")].map(i=>i.checked);p.innerHTML="";
+  EV.forEach((e,i)=>{const l=document.createElement("label");l.className="pick";l.innerHTML=`<input type="checkbox" id="fn-${e.id}" ${was.length?(was[i]?"checked":""):"checked"}><span>${e[lang].n}</span>`;p.appendChild(l)});
+}
+function setLang(l){lang=l;document.getElementById("page").classList.toggle("ur",l==="ur");
+  document.getElementById("en").setAttribute("aria-pressed",l==="en");document.getElementById("ur").setAttribute("aria-pressed",l==="ur");
+  document.querySelectorAll("#page [data-k], .bar [data-k]").forEach(el=>{const v=T[l][el.dataset.k];if(typeof v==="string")el.innerHTML=v});
+  render();buildCd();cdTick(true);if(G){ScrollTrigger.getAll().forEach(s=>s.kill());motion()}}
+document.getElementById("en").onclick=()=>setLang("en");
+document.getElementById("ur").onclick=()=>setLang("ur");
+render();
+
+/* ---------- SOUND: real recorded tabla/dholak strokes (CC0) ---------- */
+const SFX=["bgm","dha","dha2","dhin","open","tihai","thaal","na","ghe","tick","post"];let ac=null,BUF={},sfxOn=true;
+try{ac=new (window.AudioContext||window.webkitAudioContext)()}catch(_){}
+if(ac)SFX.forEach(n=>fetch("sfx/"+n+".mp3").then(r=>r.arrayBuffer()).then(b=>new Promise((ok,no)=>ac.decodeAudioData(b,ok,no))).then(d=>{BUF[n]=d}).catch(()=>{}));
+function audio(){try{if(ac&&ac.state!=="running")ac.resume()}catch(_){}}
+function play(n,o){o=o||{};if(!sfxOn||!ac||!BUF[n])return;audio();const s=ac.createBufferSource(),g=ac.createGain();s.buffer=BUF[n];
+  s.playbackRate.value=o.rate||(.97+Math.random()*.06);g.gain.value=o.vol==null?1:o.vol;s.connect(g).connect(ac.destination);s.start(ac.currentTime+(o.at||0))}
+document.addEventListener("pointerdown",audio,{passive:true});
+const BGRATE=1,BGVOL=0.7;
+let bgm=null,bgmG=null,bgmWant=false;
+function startBgm(){bgmWant=true;if(!sfxOn||bgm||!ac)return;if(!BUF.bgm){setTimeout(startBgm,400);return}audio();
+  bgm=ac.createBufferSource();bgm.buffer=BUF.bgm;bgm.loop=true;bgm.loopStart=0;bgm.loopEnd=BUF.bgm.duration;bgm.playbackRate.value=BGRATE;
+  bgmG=ac.createGain();bgmG.gain.setValueAtTime(0,ac.currentTime);bgmG.gain.linearRampToValueAtTime(BGVOL,ac.currentTime+2.5);bgm.connect(bgmG).connect(ac.destination);bgm.start(ac.currentTime,0)}
+function stopBgm(){if(!bgm)return;const b=bgm,g=bgmG;bgm=null;try{g.gain.linearRampToValueAtTime(0,ac.currentTime+.6);b.stop(ac.currentTime+.7)}catch(_){}}
+document.addEventListener("visibilitychange",()=>{if(!ac)return;if(document.hidden)ac.suspend();else if(sfxOn)ac.resume()});
+
+document.addEventListener("click",e=>{if(e.target.closest(".pick,.stepper button,#en,#ur"))play("tick",{vol:.8})});
+
+/* ---------- GATE: four beats on the dholak ---------- */
+const gate=document.getElementById("gate"),stage=document.getElementById("stage"),img=stage.querySelector("img"),glow=stage.querySelector(".glow"),bol=document.getElementById("bol"),beats=[...document.querySelectorAll("#beats span")];
+const BOLS=["Dha!","Dhin!","Dhin!","Dha!"];let hits=0,opened=false;
+function beat(){if(opened)return;audio();if(hits<3)play(["dha","dhin","dhin"][hits]);else play("open",{rate:1});if(navigator.vibrate)try{navigator.vibrate(25)}catch(_){}
+  beats[hits].classList.add("on");bol.textContent=BOLS[hits];bol.classList.remove("go");void bol.offsetWidth;bol.classList.add("go");
+  stage.classList.remove("hit");void stage.offsetWidth;stage.classList.add("hit");hits++;
+  img.style.setProperty("--b",(.38+hits*.155).toFixed(2));img.style.setProperty("--s",(.7+hits*.075).toFixed(2));glow.style.setProperty("--g",(hits*.12).toFixed(2));
+  const r=document.getElementById("drum").getBoundingClientRect();petalsAt(r.left+r.width/2,r.top+r.height*.3,14);
+  document.getElementById("gHint").textContent=T[lang].bMore;
+  if(hits>=4)open()}
+document.getElementById("drum").addEventListener("pointerdown",e=>{e.preventDefault();beat()});
+document.getElementById("drum").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();beat()}});
+document.getElementById("gSkip").addEventListener("click",()=>{audio();play("open",{rate:1});open()});
+function open(){if(opened)return;opened=true;gate.classList.add("done");img.style.setProperty("--b","1");img.style.setProperty("--s","1");
+  setTimeout(startBgm,2600);
+  setTimeout(()=>{confetti(innerWidth/2,innerHeight*.6,120);sparkle(innerWidth/2,innerHeight*.35,40)},reduce?0:400);
+  setTimeout(()=>{gate.classList.add("zoom");document.getElementById("veil").classList.add("go")},reduce?0:1300);
+  setTimeout(()=>{gate.hidden=true;document.body.classList.remove("locked");window.scrollTo(0,0);heroIn();petals(30)},reduce?20:2700)}
+
+/* ---------- MUSIC (plays an attached track if present) ---------- */
+const tr=document.getElementById("track"),mb=document.getElementById("music");
+let hasTrack=false;tr.addEventListener("canplay",()=>{hasTrack=true},{once:true});
+mb.onclick=()=>{sfxOn=!sfxOn;mb.setAttribute("aria-pressed",sfxOn);if(sfxOn){audio();play("tick");if(bgmWant)startBgm()}else stopBgm()};
+
+/* ---------- FX ---------- */
+const fx=document.getElementById("fx"),fc=fx.getContext("2d");let parts=[],on=false;
+function size(){const d=Math.min(2,devicePixelRatio||1);fx.width=innerWidth*d;fx.height=innerHeight*d;fc.setTransform(d,0,0,d,0,0)}size();addEventListener("resize",size);
+const PC=["#f2a31b","#fbd34d","#d4457a","#3f8a4a","#ffffff","#e86a9a"];
+function sparkle(x,y,n){if(reduce)return;for(let i=0;i<n;i++){const a=Math.random()*6.28,s=1+Math.random()*4;parts.push({k:"s",x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-1,life:1,r:1+Math.random()*2.2,c:PC[i%2]})}go()}
+function petals(n){if(reduce)return;for(let i=0;i<n;i++)parts.push({k:"p",x:Math.random()*innerWidth,y:-20-Math.random()*innerHeight*.3,vx:Math.random()-.5,vy:1.2+Math.random()*1.4,a:Math.random()*6.28,va:(Math.random()-.5)*.06,sw:Math.random()*6.28,r:5+Math.random()*6,c:PC[i%3],life:1});go()}
+function petalsAt(x,y,n){if(reduce)return;for(let i=0;i<n;i++){const a=-Math.PI/2+(Math.random()-.5)*2.2,s=3+Math.random()*5;parts.push({k:"c",x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,a:Math.random()*6.28,va:(Math.random()-.5)*.3,w:6+Math.random()*4,h:5+Math.random()*3,c:PC[i%2],life:1})}go()}
+function confetti(x,y,n){if(reduce)return;for(let i=0;i<n;i++){const a=-Math.PI/2+(Math.random()-.5)*1.8,s=4+Math.random()*7;parts.push({k:"c",x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,a:Math.random()*6.28,va:(Math.random()-.5)*.3,w:4+Math.random()*4,h:2+Math.random()*3,c:PC[i%6],life:1})}go()}
+function go(){if(!on){on=true;requestAnimationFrame(loop)}}
+function loop(){fc.clearRect(0,0,innerWidth,innerHeight);
+  parts.forEach(p=>{if(p.k==="s"){p.x+=p.vx;p.y+=p.vy;p.vy+=.06;p.life-=.016;fc.globalAlpha=Math.max(0,p.life);fc.fillStyle=p.c;fc.beginPath();fc.arc(p.x,p.y,p.r,0,6.28);fc.fill()}
+    else if(p.k==="p"){p.sw+=.03;p.x+=p.vx+Math.sin(p.sw)*.6;p.y+=p.vy;p.a+=p.va;fc.globalAlpha=.9;fc.save();fc.translate(p.x,p.y);fc.rotate(p.a);fc.scale(1,Math.abs(Math.cos(p.sw))*.6+.4);fc.fillStyle=p.c;fc.beginPath();fc.moveTo(0,-p.r);fc.bezierCurveTo(p.r,-p.r*.6,p.r*.8,p.r*.7,0,p.r);fc.bezierCurveTo(-p.r*.8,p.r*.7,-p.r,-p.r*.6,0,-p.r);fc.fill();fc.restore();if(p.y>innerHeight+20)p.life=0}
+    else{p.x+=p.vx;p.y+=p.vy;p.vx*=.98;p.vy+=.18;p.a+=p.va;p.life-=.008;fc.globalAlpha=Math.max(0,Math.min(1,p.life*2));fc.save();fc.translate(p.x,p.y);fc.rotate(p.a);fc.fillStyle=p.c;fc.fillRect(-p.w/2,-p.h/2,p.w,p.h);fc.restore();if(p.y>innerHeight+20)p.life=0}});
+  fc.globalAlpha=1;parts=parts.filter(p=>p.life>0);if(parts.length)requestAnimationFrame(loop);else{on=false;fc.clearRect(0,0,innerWidth,innerHeight)}}
+function heroIn(){if(G){gsap.from("#hero .bg",{scale:1.12,duration:2.4,ease:"power2.out"});gsap.from("#hero .txt > *",{opacity:0,y:24,stagger:.18,duration:1.2,ease:"back.out(1.6)",delay:.1})}}
+
+/* ---------- THAAL & CHAMACH ---------- */
+const steel=document.getElementById("steel");let taps=0;
+steel.addEventListener("click",()=>{if(steel.classList.contains("open"))return;audio();taps++;
+  play("thaal",{rate:[1,1.06,1.13][Math.min(2,taps-1)]});
+  steel.classList.remove("tap");void steel.offsetWidth;steel.classList.add("tap");
+  document.getElementById("taps").textContent=["· · ·","● · ·","● ● ·","● ● ●"][Math.min(3,taps)];
+  document.getElementById("thHint").textContent=T[lang]["hint"+Math.min(3,taps)];
+  if(taps>=3){setTimeout(()=>{steel.classList.add("open");play("tihai",{rate:1});const r=steel.getBoundingClientRect();confetti(r.left+r.width/2,r.top+r.height/2,90)},250)}});
+
+/* ---------- COUNTDOWN on dholak heads ---------- */
+const target=new Date("2026-11-26T20:00:00+05:00").getTime();let prev={};
+function buildCd(){prev={};document.getElementById("cd").innerHTML=[["d","days"],["h","hrs"],["m","min"],["s","sec"]].map(([k,l])=>`<div class="dh"><div class="head"><b id="v${k}">--</b></div><small class="${lang==="ur"?"t":""}" style="${lang==="ur"?"letter-spacing:0;font-size:12px":""}">${T[lang][l]}</small></div>`).join("")}
+function cdTick(force){const s=Math.max(0,Math.floor((target-Date.now())/1000));const v={d:Math.floor(s/86400),h:Math.floor(s%86400/3600),m:Math.floor(s%3600/60),s:s%60};
+  for(const k in v){const b=document.getElementById("v"+k);if(!b)continue;const t=k==="d"?String(v[k]):String(v[k]).padStart(2,"0");if(prev[k]!==t){b.textContent=t;if(!force&&!reduce){b.classList.remove("tick");void b.offsetWidth;b.classList.add("tick")}prev[k]=t}}}
+buildCd();cdTick(true);setInterval(()=>cdTick(false),1000);
+
+/* ---------- CHEER METER (counts your own taps) ---------- */
+let cg=0,cb=0,mine=null;const mbar=document.getElementById("mbar");
+try{mine=localStorage.getItem("dholkiSide")}catch(_){}if(mine==="g")cg=1;else if(mine==="b")cb=1;
+function paintSide(){document.getElementById("cg").textContent=cg;document.getElementById("cb").textContent=cb;document.getElementById("tg").classList.toggle("mine",mine==="g");document.getElementById("tb").classList.toggle("mine",mine==="b");mbar.style.setProperty("--p",(50+Math.max(-42,Math.min(42,(cb-cg)*4)))+"%")}
+paintSide();
+function cheer(side,e){audio();if(mine===side){play(side==="g"?"na":"ghe");petalsAt(e.clientX,e.clientY,6);return}
+  if(mine==="g")cg=Math.max(0,cg-1);else if(mine==="b")cb=Math.max(0,cb-1);if(side==="g")cg++;else cb++;mine=side;try{localStorage.setItem("dholkiSide",side)}catch(_){}paintSide();
+  const p=50+Math.max(-42,Math.min(42,(cb-cg)*4));mbar.style.setProperty("--p",p+"%");play(side==="g"?"na":"ghe");petalsAt(e.clientX,e.clientY,8)}
+document.getElementById("tg").addEventListener("click",e=>cheer("g",e));document.getElementById("tb").addEventListener("click",e=>cheer("b",e));
+
+/* ---------- SCROLL MOTION ---------- */
+function motion(){
+  gsap.to("#hero .bg",{yPercent:-6,ease:"none",scrollTrigger:{trigger:"#hero",start:"top top",end:"bottom top",scrub:true}});
+  gsap.utils.toArray("section").forEach(sec=>{
+    gsap.from(sec.querySelectorAll(".bunting .flag"),{y:-30,opacity:0,stagger:.05,duration:.8,ease:"back.out(2)",scrollTrigger:{trigger:sec,start:"top 85%"}});
+    gsap.from(sec.querySelectorAll(".sh > *"),{opacity:0,y:20,stagger:.1,duration:.9,ease:"back.out(1.6)",scrollTrigger:{trigger:sec,start:"top 82%"}});
+  });
+  gsap.from(".corner.a",{opacity:0,y:-40,rotate:20,duration:1.4,ease:"elastic.out(1,.5)",scrollTrigger:{trigger:".corner.a",start:"top 95%"}});
+  gsap.from(".bism,.lede,.fams > *,.verse",{opacity:0,y:20,stagger:.12,duration:1,ease:"power3.out",scrollTrigger:{trigger:".lede",start:"top 88%"}});
+  gsap.from("#steel",{opacity:0,scale:.6,rotate:-30,duration:1.2,ease:"back.out(1.6)",scrollTrigger:{trigger:"#steel",start:"top 85%"}});
+  gsap.from(".dh",{y:-50,opacity:0,stagger:.12,duration:.9,ease:"bounce.out",scrollTrigger:{trigger:"#cd",start:"top 88%"}});
+  gsap.utils.toArray(".tk").forEach((t,i)=>gsap.from(t,{opacity:0,x:i%2?60:-60,rotate:i%2?8:-8,duration:1.1,ease:"back.out(1.4)",scrollTrigger:{trigger:t,start:"top 88%"}}));
+  gsap.from("#tl .row",{opacity:0,y:20,scale:.95,stagger:.12,duration:.7,ease:"back.out(1.6)",scrollTrigger:{trigger:"#tl",start:"top 85%"}});
+  gsap.from(".teams button",{opacity:0,y:30,stagger:.15,duration:.8,ease:"back.out(1.8)",clearProps:"transform,opacity",scrollTrigger:{trigger:".cheer",start:"top 88%"}});
+  gsap.from(".map",{opacity:0,y:30,duration:1,ease:"power3.out",scrollTrigger:{trigger:".map",start:"top 88%"}});
+  gsap.from(".map .pin",{y:-60,opacity:0,duration:1,ease:"bounce.out",delay:.3,scrollTrigger:{trigger:".map",start:"top 85%"}});
+  gsap.utils.toArray(".cards").forEach(c=>gsap.from(c.children,{opacity:0,y:20,stagger:.12,duration:.8,ease:"power3.out",scrollTrigger:{trigger:c,start:"top 88%"}}));
+  gsap.from("#rform",{opacity:0,y:30,duration:1,ease:"power3.out",scrollTrigger:{trigger:"#rform",start:"top 90%"}});
+  gsap.from(".wish",{opacity:0,y:16,stagger:.12,duration:.8,scrollTrigger:{trigger:"#wishes",start:"top 90%"}});
+  gsap.from("footer > *",{opacity:0,y:20,stagger:.12,duration:1,ease:"power3.out",scrollTrigger:{trigger:"footer",start:"top 90%"}});
+  ScrollTrigger.refresh();
+}
+if(G)motion();
+
+/* ---------- RSVP ---------- */
+let guests=2;const gc=document.getElementById("gc");
+document.getElementById("gm").onclick=()=>{guests=Math.max(1,guests-1);gc.textContent=guests};
+document.getElementById("gp").onclick=()=>{guests=Math.min(10,guests+1);gc.textContent=guests};
+const attY=document.getElementById("att-y"),attN=document.getElementById("att-n");
+function attT(){const y=attY.checked;document.getElementById("fnBlock").hidden=!y;document.getElementById("gBlock").hidden=!y}
+attY.onchange=attT;attN.onchange=attT;
+document.getElementById("rform").addEventListener("submit",e=>{e.preventDefault();const err=document.getElementById("rerr");
+  const n=document.getElementById("rname").value.trim();if(!n){err.textContent=T[lang].errName;err.hidden=false;return}
+  const fns=EV.filter(x=>document.getElementById("fn-"+x.id).checked).map(x=>x[lang].n);
+  if(attY.checked&&!fns.length){err.textContent=T[lang].errFn;err.hidden=false;return}
+  err.hidden=true;const th=document.getElementById("thanks");th.innerHTML=`<div class="big t">${T[lang].thanks}</div><p class="t" style="margin:8px 0 0"></p>`;
+  th.querySelector("p").textContent=attY.checked?T[lang].tyYes(n,guests,fns.join(lang==="ur"?"، ":", ")):T[lang].tyNo(n);
+  e.target.hidden=true;th.hidden=false;play(attY.checked?"tihai":"dhin",{rate:1});if(attY.checked){const r=th.getBoundingClientRect();confetti(r.left+r.width/2,r.top+40,90)}if(G)ScrollTrigger.refresh()});
+document.getElementById("wf").addEventListener("submit",e=>{e.preventDefault();const t=document.getElementById("wt");const v=t.value.trim();if(!v)return;
+  const d=document.createElement("div");d.className="wish";const p=document.createElement("p");p.textContent=v;const s=document.createElement("small");s.textContent=T[lang].you;
+  play("post",{rate:1});d.append(p,s);document.getElementById("wishes").prepend(d);t.value="";if(G){gsap.from(d,{opacity:0,y:-10,duration:.5});ScrollTrigger.refresh()}});
+})();
+</script>
+<script>window.COUPLE_NAMES="Sana & Fahad";</script><script>(function(){const b=document.getElementById("comeBtn");if(!b)return;const who=window.COUPLE_NAMES||(document.title.split("·")[0]||"").trim();
+b.href="https://wa.me/"+(window.COUPLE_WA||"923491175847")+"?text="+encodeURIComponent("Hum zaroor aayenge 🤍"+(who?" ("+who+" ki shaadi)":""));})();</script><script>/* Bismillah and the Ar-Rum ayat are optional per couple: set window.FAITH=false to hide them */
+(function(){if(window.FAITH!==false)return;const hide=e=>{if(e)e.style.display="none"};
+document.querySelectorAll("body *").forEach(e=>{if(e.children.length===0&&/بِسْمِ|بسم الله/.test(e.textContent))hide(e)});
+document.querySelectorAll("section,div.verse,.ayah,.quran").forEach(s=>{if(/30:21|الروم|Ar-Rum|Ar Rum/i.test(s.textContent)&&s.textContent.length<900)hide(s)})})();</script><div id="bwmark" aria-hidden="true">Muzayyan<small>Preview · muzayyan.com</small></div>
+<script>(function(){const no=e=>{e.preventDefault();return false};
+document.addEventListener("contextmenu",no,true);document.addEventListener("dragstart",e=>{if(e.target&&(e.target.tagName==="IMG"||e.target.tagName==="VIDEO"))no(e)},true);
+document.addEventListener("keydown",e=>{const k=(e.key||"").toLowerCase();if((e.ctrlKey||e.metaKey)&&["s","u","p","c"].includes(k))no(e)},true);
+document.addEventListener("copy",no,true);
+/* keep the watermark on top even if a card re-renders its body */
+setInterval(()=>{const m=document.getElementById("bwmark");if(m&&m.parentNode!==document.body)document.body.appendChild(m);else if(m&&document.body.lastElementChild!==m)document.body.appendChild(m)},1500);
+document.querySelectorAll("video").forEach(v=>{v.setAttribute("controlsList","nodownload");v.disablePictureInPicture=true});})();</script>
+<script id="bwNoWallJs">document.querySelectorAll("#gb,#wf").forEach(function(f){var s=f.closest("section");if(s)s.style.display="none"});</script><script id="bw-namefit2">
+/* Bulawa · keeps couple names inside their box on the standalone designs (bangles, dholki, mehndi, sehra, kangan, jharokha).
+   Each card keeps its own font. Names shrink to fit; very long names wrap into balanced lines. */
+(function(){
+  var SEL=".poster .nm,.hname,.gtop .n,#gate .names .n,.under .nm b,.names .n";
+  var els=[].slice.call(document.querySelectorAll(SEL));if(!els.length)return;
+  var keys=new WeakMap(),base=new WeakMap();
+  function fs(n,v){if(v)n.style.setProperty("font-size",v,"important");else n.style.removeProperty("font-size")}
+  function room(n){var p=n.parentElement,cs=getComputedStyle(p);return p.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight)}
+  function txt(n,multi){var r=document.createRange();r.selectNodeContents(n);var rs=r.getClientRects(),L=[],w=0;for(var i=0;i<rs.length;i++){var q=rs[i];if(q.width<1)continue;var f=null;for(var j=0;j<L.length;j++)if(Math.abs(L[j][0]-q.top)<Math.max(3,q.height*0.5)){f=L[j];break}if(!f)L.push([q.top,q.left,q.right]);else{f[1]=Math.min(f[1],q.left);f[2]=Math.max(f[2],q.right)}}L.forEach(function(x){w=Math.max(w,x[2]-x[1])});
+    var b=n.getBoundingClientRect(),k=(n.offsetWidth&&b.width)?b.width/n.offsetWidth:1;return w/(k||1)}
+  function nl(n){var r=document.createRange();r.selectNodeContents(n);var rs=r.getClientRects(),t=[];for(var i=0;i<rs.length;i++){var y=Math.round(rs[i].top);if(rs[i].width>2&&t.indexOf(y)<0&&!t.some(function(q){return Math.abs(q-y)<4}))t.push(y)}return t.length}
+  function fit(n){
+    var W=room(n);if(!W||!n.textContent.trim()||!n.offsetParent&&getComputedStyle(n).position!=="fixed")return;
+    var key=W+"|"+n.textContent;if(keys.get(n)===key)return;keys.set(n,key);
+    n.style.textWrap="";fs(n,"");n.style.maxWidth="";n.style.whiteSpace="nowrap";
+    var b=parseFloat(getComputedStyle(n).fontSize),maxW=W*0.97,w=txt(n),s=b;var h1=n.offsetHeight||1;
+    if(w>maxW){
+      s=b*maxW/w;
+      if(s<b*0.66){s=b*0.8;n.style.whiteSpace="normal";n.style.textWrap="balance";n.style.maxWidth=maxW+"px";fs(n,s+"px");var lw=txt(n);if(lw>maxW){s=s*maxW/lw;fs(n,s+"px")}
+        for(var k=0;k<16&&Math.round(n.offsetHeight/(h1*s/b))>2&&s>b*0.45;k++){s*=0.94;fs(n,s+"px")}}
+      fs(n,s+"px");
+    } else {n.style.whiteSpace=""}
+  }
+  function all(){els.forEach(function(n){keys.delete(n);fit(n)})}
+  all();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(all);if(document.fonts&&document.fonts.addEventListener)document.fonts.addEventListener("loadingdone",all);
+  addEventListener("load",all);addEventListener("resize",all);
+  if(window.ResizeObserver){var ro=new ResizeObserver(function(){requestAnimationFrame(function(){els.forEach(fit)})});els.forEach(function(n){ro.observe(n.parentElement)})}
+  els.forEach(function(n){new MutationObserver(function(){requestAnimationFrame(function(){fit(n)})}).observe(n,{childList:true,characterData:true,subtree:true})});
+})();
+</script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"9193a3e4a432418f879d2b2a41d899f7","r":1,"spa":2}' crossorigin="anonymous"></script>
