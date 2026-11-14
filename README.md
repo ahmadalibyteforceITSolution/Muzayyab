@@ -1,6 +1,6 @@
 # Muzayyan (مزین) — Digital Wedding Invitations
 
-An exact, complete, luxury copy of the wedding invitation platform branded for **Muzayyan**, with direct **WhatsApp Order Integration** powered by phone number **`+92 341 68867454`**.
+An exact, complete, luxury copy of the wedding invitation platform branded for **Muzayyan**, with direct **WhatsApp Order Integration** powered by phone number **`+92 341 6887454`**.
 
 ---
 
@@ -24,7 +24,7 @@ An exact, complete, luxury copy of the wedding invitation platform branded for *
    - **Multi-currency Pricing Engine**: PKR for Pakistan visitors (`Rs 4,500`), and automatic USD, GBP, EUR, MYR conversions for international guests
 
 4. **Direct WhatsApp Ordering**:
-   - Target WhatsApp Number: **`+92 341 68867454`** (`9234168867454`)
+   - Target WhatsApp Number: **`+92 341 6887454`** (`923416887454`)
    - The `/order/` page gathers Bride & Groom names, family names, wedding style, functions, dates, times, venues, RSVP number, customer contact, and notes.
    - When submitted, it automatically creates a formatted order summary and launches WhatsApp to send the complete order directly.
    - Includes JazzCash mobile wallet and Bank transfer details for payment receipt submission via WhatsApp.

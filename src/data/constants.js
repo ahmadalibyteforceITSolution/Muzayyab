@@ -1,5 +1,5 @@
-export const WA_NUMBER = "9234168867454";
-export const WA_DISPLAY = "+92 341 68867454";
+export const WA_NUMBER = "923416887454";
+export const WA_DISPLAY = "+92 341 6887454";
 
 export const REGIONS = {
  pkr: { code: "PKR", sym: "Rs ", price: { signature: 4500, premium: 6300, atelier: 7800 }, was: { signature: 7500, premium: 9900, atelier: 12500 } },
