@@ -85,10 +85,10 @@ function add(role,text,card,img,entry){
 /* English for visitors outside Pakistan (country from the site's price region), Roman Urdu in Pakistan. Bolu then follows whatever language they write in. */
 const EN=()=>{try{return !!(window.BW_REGION&&BW_REGION.cur&&BW_REGION.cur!=="pkr")}catch(_){return false}};
 const TX={en:{hello:"Hello! I'm Bolu 🧸 your card helper at Muzayyan. I can help you pick a design, check prices or make your own card. You can also send your photos and your song with the + button.",
-  chips:[["Prices","What are the prices?"],["Wedding designs","Which designs do you have for a wedding?"],["Make my card","I want to make my own card"],["What's inside?","What is inside the card?"]],ph:"Type your question…",err:"Connection problem. Please try again or WhatsApp us: wa.me/923491175847",
+  chips:[["Prices","What are the prices?"],["Wedding designs","Which designs do you have for a wedding?"],["Make my card","I want to make my own card"],["What's inside?","What is inside the card?"]],ph:"Type your question…",err:"Connection problem. Please try again or WhatsApp us: wa.me/9234168867454",
   note:"AI helper. Chats are saved to help us serve you. Don't share bank or card details."},
  ur:{hello:"Assalam o Alaikum! Main Bolu hoon 🧸 Muzayyan ka card helper. Design chunne, prices ya apna card banwane mein madad karta hoon. Apni photos aur apna gaana bhi + se bhej sakte hain.",
-  chips:[["Prices kya hain?","Prices kya hain?"],["Baraat ke designs","Baraat ke liye kaunse designs ache hain?"],["Mera card banao","Mujhe apna card banwana hai"],["Card mein kya hota hai?","Card ke andar kya kya hota hai?"]],ph:"Apna sawal likhein…",err:"Maazrat, connection ka masla hai. Dobara try karein ya WhatsApp karein: wa.me/923491175847",
+  chips:[["Prices kya hain?","Prices kya hain?"],["Baraat ke designs","Baraat ke liye kaunse designs ache hain?"],["Mera card banao","Mujhe apna card banwana hai"],["Card mein kya hota hai?","Card ke andar kya kya hota hai?"]],ph:"Apna sawal likhein…",err:"Maazrat, connection ka masla hai. Dobara try karein ya WhatsApp karein: wa.me/9234168867454",
   note:"AI helper. Chats save hoti hain taake hum behtar madad kar sakein. Bank ya card details na bhejein."}};
 const L=()=>TX[EN()?"en":"ur"];
 
@@ -128,7 +128,7 @@ FI.onchange=async()=>{
   let body,type,thumb="",label="";
   try{
     if(isImg){const big=await shrink(f,1600,.85),sm=await shrink(f,360,.6);body=big.blob;type="image/jpeg";thumb=sm.url}
-    else{if(f.size>12e6){add("assistant",EN()?"The song must be under 12 MB. For a bigger file please WhatsApp us: wa.me/923491175847":"Gaana 12 MB se chhota hona chahiye. Bara ho to WhatsApp pe bhej dein: wa.me/923491175847");return}
+    else{if(f.size>12e6){add("assistant",EN()?"The song must be under 12 MB. For a bigger file please WhatsApp us: wa.me/9234168867454":"Gaana 12 MB se chhota hona chahiye. Bara ho to WhatsApp pe bhej dein: wa.me/9234168867454");return}
       body=f;type=f.type&&/^audio\//.test(f.type)?f.type:(/\.m4a$/i.test(f.name)?"audio/mp4":"audio/mpeg");label="🎵 "+f.name.slice(0,60)}
   }catch(_){add("assistant",EN()?"This photo could not be opened, please try another one.":"Ye photo khul nahi saki, koi aur try karein.");return}
   if(thumb){add("user","",null,thumb)}else add("user",label);

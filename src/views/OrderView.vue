@@ -173,7 +173,7 @@
               Send Order on WhatsApp 💌
             </button>
             <p class="submit-sub">
-              Your order details will open automatically in WhatsApp to <b>+92 349 1175847</b>.
+              Your order details will open automatically in WhatsApp to <b>+92 341 68867454</b>.
             </p>
           </div>
         </form>
@@ -205,7 +205,7 @@
               </div>
               <div class="pay-row">
                 <span>JazzCash Number:</span>
-                <b>0349 1175847</b>
+                <b>0341 68867454</b>
               </div>
             </div>
 
@@ -217,7 +217,7 @@
               </div>
               <div class="pay-row">
                 <span>Bank Details:</span>
-                <b>Available on WhatsApp (+92 349 1175847)</b>
+                <b>Available on WhatsApp (+92 341 68867454)</b>
               </div>
             </div>
           </div>
